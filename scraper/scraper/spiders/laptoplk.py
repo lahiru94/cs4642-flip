@@ -9,7 +9,6 @@ class LaptoplkSpider(scrapy.Spider):
 
     def parse(self, response):
         links =  response.selector.xpath('//ul[@id="menu"]/li/div//a[@class="link7"]/@href').extract()
-        print len(links)
         for link in links:
             full_url = self.start_urls[0] + "/" + link
             yield scrapy.Request(full_url, callback=self.parse_details_page)
