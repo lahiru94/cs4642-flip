@@ -14,8 +14,8 @@ class LaptoplkSpider(scrapy.Spider):
             yield scrapy.Request(full_url, callback=self.parse_details_page)
 
     def parse_details_page(self, response):
-        page = response.url.split("=")[-2]
-        filename = 'data/laptoplk/laplk-%s.html' % page
+        page = response.url.split("/")[-1]
+        filename = 'data/laptoplk/%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)

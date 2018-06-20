@@ -9,7 +9,7 @@ class SoftlogicSpider(scrapy.Spider):
     base_url = 'https://mysoftlogic.lk'
 
     def parse(self, response):
-        links =  response.selector.xpath('//div[@class="product-item"]//a/@href').extract()
+        links =  response.selector.xpath('//div[@class="product-item"]/figure/figcaption/a/@href').extract()
         print len(links)
         for link in links:
             full_url = self.start_urls[0] + "/" + link

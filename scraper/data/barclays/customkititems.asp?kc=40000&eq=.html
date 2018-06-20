@@ -1,0 +1,2269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Basic page needs -->
+<meta charset="utf-8">
+<!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <![endif]-->
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="keywords" content="Megabox Max - I PC"/>
+		<meta name="description" content="Megabox Max - I PC"/>
+		<title>Barclays Computers (PVT) Ltd. - Megabox Max - I PC - Kit Configuration Page</title>
+
+<!-- Mobile specific metas  -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700italic,700,400italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800' rel='stylesheet' type='text/css'>
+
+<!-- CSS Style -->
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+<!-- font-awesome & simple line icons CSS -->
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/simple-line-icons.css" media="all">
+
+<!-- owl.carousel CSS -->
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+
+<!-- animate CSS  -->
+<link rel="stylesheet" type="text/css" href="css/animate.css" media="all">
+
+<!-- jquery-ui.min CSS  -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+
+<!-- style CSS -->
+<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+<script language="javascript">
+var Total=0
+var configArr,sCustomFields
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This function used to format numbers.
+//	@		                	If we pass 100 , this funciton will return 100.00.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: formatValue(value)									
+//	@		Input Parameters: value = then number to be formatted
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+function formatValue(value){
+	return Math.round(value*100)/100;
+}
+// End of the function formatValue(value)
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This printkit function is to show the printable version of the Kit. 
+//	@		                	It opens Customprint.htm and shows the ItemImage, ItemName, Item desc 
+//	@		                	and Price. These data's are taken from the hidden fields. It checks  
+//	@		                	for callforprice also. Qty is taken as 1 by default. It checks for 
+//	@		                	the selected item in the combo box and dispalays the category 
+//	@		                	for selected item and the corresponding item. It checks for '[' in the 
+//	@		                	item name and removes all character's after '['.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: printkit()									
+//	@		Input Parameters: null
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+function printkit()
+{
+	var iIndex,myWin,iCount,sString1,len,sString2,sImgLink;
+	myWin = window.open('','_kit','width=500,height=500,toolbar,scrollbars')
+	//myWin.document.open();
+	iCount = 0;
+	len = document.frmKitUpgrades.elements.length;
+	myWin.document.write("<TITLE>"+getMessage("iPrintVerKit")+"</TITLE>");
+	myWin.document.write("<table border =0 cellspacing = '8'><tr><td width = 100% colspan=4 valign = top><font face = 'verdana, arial' size = 1><B>");
+	sImgLink=document.frmKitAmt.imglink.value 
+	if (sImgLink.substring(sImgLink.length - 1, sImgLink.length) != "/" )
+	myWin.document.write("<img src='" + document.frmKitAmt.imglink.value + "' align=left>");
+	myWin.document.write(document.frmKitAmt.itemname.value);
+	myWin.document.write("</B><br><br>");
+	myWin.document.write(document.frmKitAmt.description.value);
+	
+		myWin.document.write("</td></tr><tr><td colspan=2><font face = 'verdana, arial' size = 1 valign=top><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+getMessage("iQty")+" : 1</td></tr><tr><td colspan='3'><font face = 'verdana, arial' size = 1>"+getMessage("iKitPrice")+":&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LKR ");
+		myWin.document.write(document.frmKitAmt.txtTotalKitValue.value);
+		
+	myWin.document.write("</b></font></td></tr>");
+	
+	for(iIndex=0;iIndex<=parseInt(len)-1;iIndex++)
+	{
+		if((document.frmKitUpgrades.elements[iIndex].type.substring(0,3) == "sel") || (document.frmKitUpgrades.elements[iIndex].name.substring(0,8) == "upg_name"))
+		{		if(iCount==0)
+					myWin.document.write("<tr><td colspan=4><font face = 'verdana, arial' size = 1 valign=top><b>"+getMessage("iKitItem")+" "+getMessage("iIndividualPrice")+" "+getMessage("iShownBelow")+"</b></font></td></tr>")
+				iCount++;
+				myWin.document.write("<tr><td><font face = 'verdana, arial' size = 1>");
+				myWin.document.write(eval("document.frmKitUpgrades.kitname" + iCount + ".value")+"</td></font>");
+				//Added to Show individual kit items price
+				
+				myWin.document.write("<td nowrap><font face = 'verdana, arial' size = 1>LKR ");
+				myWin.document.write(eval("document.frmKitUpgrades.price" + iCount + ".value")+ " " + "</td></font>")
+				
+				//Ends Here
+				myWin.document.write("<td><font face = 'verdana, arial' size = 1>");
+				if(document.frmKitUpgrades.elements[iIndex].type.substring(0,3) == "sel"){
+					sString1 = document.frmKitUpgrades.elements[iIndex].options[document.frmKitUpgrades.elements[iIndex].selectedIndex].text;
+					sString2 = sString1.indexOf("[");
+					if(sString2 != -1)
+						sString1 = sString1.substring(0,sString2-1);
+				}	
+				else
+					sString1 = document.frmKitUpgrades.elements[iIndex].value
+
+				myWin.document.write(sString1);
+				myWin.document.write("</td></tr>");
+			}
+	}	
+	myWin.document.write("</table>");
+	myWin.document.close();
+	myWin.focus();
+}
+// End of the function printkit()
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This function is to popup the details of the item selected in the list box.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: printitem(sel)									
+//	@		Input Parameters: sel = To find the name of the list box
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+function printitem(sel)
+{
+	var code,arr;
+	code =eval("document.frmKitUpgrades.sel" + sel + ".options[document.frmKitUpgrades.sel" + sel + ".selectedIndex].value");
+	arr = code.split("#");
+	if(arr[3]=="T")
+		window.open("printItem.asp?Source=CK&ic=" + arr[0],"winPrint","toolbar,height=400,width=550,scrollbars,resizable");
+	else
+		alert(getMessage("iMoreInfoNotAvail"));
+}
+// End of the function printitem(sel)
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This function is to recalculate the total whenever user changes 
+//  @                     the configuration, and to change the price in the text box.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: CalculateTotal()									
+//	@		Input Parameters: null
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+function CalculateTotal(kitprice,clubtotal,sLocaleId,addKitPrice){
+	if(sLocaleId == "")
+		sLocaleId = 1033;
+	var i,sel_Count;
+	var Sum,addSum,temp,addtemp,arr,arr2,totalvalue,addTotalvalue,sKitValue,sAddKitValue,objKitFld,objAddKitFld;
+	totalvalue=0;
+	addTotalvalue=0;
+	configArr=""
+	
+	len = document.frmKitUpgrades.elements.length;
+  
+		if(clubtotal=='T'){
+			Sum=getEnglishLocale(kitprice,sLocaleId);
+			addSum = getEnglishLocale(addKitPrice,sLocaleId);
+			
+		}
+		else{
+			Sum = 0.0;
+			addSum = 0.0;
+		}
+			
+		sel_Count = 0;
+		
+		for(i=0;i<=parseInt(len)-1;i++)	{
+			if(document.frmKitUpgrades.elements[i].type.substring(0,3) == "sel") {				
+				arr =  document.frmKitUpgrades.elements[i].options[document.frmKitUpgrades.elements[i].selectedIndex].value.split("#");
+				arr2 = document.frmKitUpgrades.elements[i].options[0].value.split("#");
+				if (document.frmKitUpgrades.elements[i].selectedIndex == 0){
+					if (clubtotal != 'T'){
+						Sum = formatValue(parseFloat(Sum) + parseFloat(getEnglishLocale(arr[1],sLocaleId) * parseInt(arr[2])));
+						addSum = formatValue(parseFloat(addSum) + parseFloat(getEnglishLocale(arr[4],sLocaleId) * parseInt(arr[2])));
+					}
+						
+				}
+				else{
+					if (clubtotal == 'T'){					
+						Sum = formatValue(parseFloat(Sum) + parseFloat(getEnglishLocale(arr[1],sLocaleId) * parseInt(arr[2])));
+						addSum = formatValue(parseFloat(addSum) + parseFloat(getEnglishLocale(arr[4],sLocaleId) * parseInt(arr[2])));
+					}
+					else {
+						Sum = formatValue(parseFloat(Sum) + parseFloat((parseFloat(getEnglishLocale(arr[1],sLocaleId)) + parseFloat(getEnglishLocale(arr2[1],sLocaleId))) * parseInt(arr2[2])));
+						addSum = formatValue(parseFloat(addSum) + parseFloat((parseFloat(getEnglishLocale(arr[4],sLocaleId)) + parseFloat(getEnglishLocale(arr2[4],sLocaleId))) * parseInt(arr2[2])));
+					}
+				}				
+				configArr = configArr + parseInt(document.frmKitUpgrades.elements[i].selectedIndex)+ "#";
+				sel_Count = parseInt(sel_Count) + 1;
+				if (clubtotal != 'T'){
+					if(document.frmKitUpgrades.elements[i].selectedIndex == 0)	{
+						temp = getEnglishLocale(arr2[1],sLocaleId)*arr2[2];
+						addtemp	=getEnglishLocale(arr2[4],sLocaleId)*arr2[2];
+						eval("document.frmKitUpgrades.price" + sel_Count + ".value=" + formatValue(temp));
+						fldname="frmKitUpgrades.price" + sel_Count;
+						setFormat(fldname);
+						objKitFld = eval("document.frmKitUpgrades.price" + sel_Count);						 
+						objKitFld.value= getCurrentLocale(objKitFld.value,sLocaleId);
+						
+						
+					}
+					else	{
+						temp = getEnglishLocale(arr[1],sLocaleId);
+						temp = (parseFloat(temp) + parseFloat(getEnglishLocale(arr2[1],sLocaleId)))*arr2[2];
+						addtemp = getEnglishLocale(arr[4],sLocaleId);
+						addtemp = (parseFloat(addtemp) + parseFloat(getEnglishLocale(arr2[4],sLocaleId)))*arr2[2];
+						eval("document.frmKitUpgrades.price" + sel_Count + ".value=" + formatValue(temp));
+						fldname="frmKitUpgrades.price" + sel_Count;
+						setFormat(fldname);
+						objKitFld = eval("document.frmKitUpgrades.price" + sel_Count);
+						objKitFld.value= getCurrentLocale(objKitFld.value,sLocaleId);
+						
+						
+						
+					}
+				}
+			}
+			
+			if(document.frmKitUpgrades.elements[i].name.substring(0,13) == "upgradehidden")	{
+				configArr = configArr + 0 + "#"
+				sel_Count = parseInt(sel_Count) + 1;
+			}
+		}
+	
+		if(clubtotal != 'T'){
+			for(i=0;i<=parseInt(len)-1;i++)	{
+				if(document.frmKitUpgrades.elements[i].name.substring(0,13) == "upgradehidden")
+					totalvalue= totalvalue + parseFloat(getEnglishLocale(document.frmKitUpgrades.elements[i].value,sLocaleId));
+				if(document.frmKitUpgrades.elements[i].name.substring(0,22) == "Add_Curr_upgradehidden")
+					addTotalvalue= addTotalvalue + parseFloat(getEnglishLocale(document.frmKitUpgrades.elements[i].value,sLocaleId));									
+					
+			}
+		}
+		sKitValue=parseFloat(Sum)+ totalvalue;	
+		sAddKitValue = parseFloat(addSum)+ addTotalvalue;	
+		if(sKitValue < 0 )
+			alert(getMessage("iValidPriceComb"));
+		document.frmKitAmt.txtTotalKitValue.value = sKitValue;
+		setFormat("frmKitAmt.txtTotalKitValue");
+		stempKitVal = document.frmKitAmt.txtTotalKitValue.value;
+		document.frmKitAmt.txtTotalKitValue.value = getCurrentLocale(stempKitVal,sLocaleId);
+		
+}
+// End of the function CalculateTotal()
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This function used to format the contents in the field.
+//	@		                	If value is 100.0 , this funciton will change it to 100.00.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: setFormat(field)									
+//	@		Input Parameters: field = name of the form and fieldto be formatted
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+function setFormat(field){
+		var i, idiff,strval;
+		var m_Field = eval("document." + field);
+  	if(m_Field.value.indexOf(".") < 0)
+			m_Field.value = m_Field.value + ".00";
+		if(m_Field.value.length-m_Field.value.indexOf(".") == 2)
+			m_Field.value = m_Field.value + "0";
+		else if(m_Field.value.length-m_Field.value.indexOf(".") > 3){
+			m_Field.value=m_Field.value.substring(0,m_Field.value.indexOf(".") +3)		
+		}
+	  idiff=10-m_Field.value.length	
+		strval=""
+		for(i=0;i< 10;i++)	{
+			strval=strval+ " "  
+			if (i==idiff-1){
+				strval=strval+m_Field.value;
+				break;
+			}
+		}
+}// End of the function setFormat(field)
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: This function is used to validate the quantity and submit the form.
+//	@	  Pages Affected  : CustomKitItems.asp
+//  @		Function Name		: CheckConfig(todo)									
+//	@		Input Parameters: todo = action to be done, whether to add, or update a kit 
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+function CheckConfig(todo){
+	var retval,iKitqty,iTotalqty,iMaxCount;
+	iKitqty=document.frmKitAmt.qty.value
+	retval=IsNumeric(iKitqty)
+	if(document.frmKitAmt.txtTotalKitValue.value < 0){
+		alert(getMessage("iValidPriceComb"));
+		return;
+	}	
+	if(retval == 1)	{
+		alert(getMessage("iValidQuantity"));
+		document.frmKitAmt.qty.value=1;
+		document.frmKitAmt.qty.focus();
+		return;
+	}
+	iKitqty = iKitqty*1
+	iMaxCount = ""
+	bMaxItem = ""
+	if ((iMaxCount != "") && (bMaxItem.toLowerCase()=="true")){
+		iTotalqty = parseInt(0)
+		if(todo=="update")
+			iTotalqty=iTotalqty - parseInt(1)
+		if((iKitqty + iTotalqty)>parseInt(iMaxCount)){
+			alert(getMessage("iTotalQtyExceed") + " " + iMaxCount);
+			document.frmKitAmt.qty.value=1;
+			document.frmKitAmt.qty.focus();
+			return;
+		}
+	}
+	document.frmKitInfo.qty.value = document.frmKitAmt.qty.value;
+	document.frmKitInfo.configArr.value = configArr;
+	document.frmKitInfo.todo.value = todo;
+	document.frmKitInfo.submit();
+}
+// End of the function CheckConfig(todo)
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description			: Function IsNumeric checks whether the entered value is a 
+//	@											numeric and greater than Zero.
+//  @		Function Name		: IsNumeric(value)									
+//	@		Input Parameters: value to be tested
+//	@		Return Value		: 0 - Success	  1 - Failure			
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+function IsNumeric(value){
+	var validate=/(^\d+$)/
+	if ((validate.test(value)) && (value > 0))
+		return 0; 
+	else
+		return 1; 
+}
+// End of the function IsNumeric(value)
+
+</script>
+<script language=javascript >
+
+        // An Array is created an initialised with the locale and the respective decimal seperators
+	var arr= new Array();
+	//locales 
+	for(i=0;i<29 ; i++)
+	{
+	 arr[i]=new Array(1);
+	}
+
+	arr[0][0]= "1059" //Belarusian .
+	arr[1][0] ="1026" //Bulgarian .
+	arr[2][0] ="3076" //Chinese(Hong Kong) .
+	arr[3][0] ="2052" //Chinese(PRC) .
+	arr[4][0] ="4100" //Chinese(Singapore) .
+	arr[5][0] ="1028" //Chinese(Taiwan) .
+	arr[6][0] ="1050" //Croatian  .
+	arr[7][0] ="1029" //Czech   .
+	arr[8][0] ="1030" //Danish   ,
+	arr[9][0] ="1043" //Dutch(Standard) ,
+	arr[10][0]="2057" //English(British)  .
+	arr[11][0]="1033" //English(United States)  .
+	arr[12][0]="1036" //French(Standard) ,
+	arr[13][0]="1031" //German(Standard) ,
+	arr[14][0]="1032" //Greek   .
+	arr[15][0]="1081" //Hindi .
+	arr[16][0]="1038" //Hungarian .
+	arr[17][0]="1057" //Indonesian ,
+	arr[18][0]="1040" //Italian(Standard) ,
+	arr[19][0]="1041" //Japanese .
+	arr[20][0]="1042" //Korean .
+	arr[21][0]="1086" //Malaysian ,
+	arr[22][0]="1044" //Norwegian(Bokmal) ,
+	arr[23][0]="2068" //Norwegian(Nynorsk) ,
+	arr[24][0]="1045" //Polish .
+	arr[25][0]="1053" //Swedish     ,
+	arr[26][0]="1034" //Spanish     ,
+	arr[27][0]="2070" //Portuguese(Standard)    
+	arr[28][0]="1046" //Portuguese(Brazilian) 
+
+	
+
+	arr[0][1]= "." //Belarusian .
+	arr[1][1] ="." //Bulgarian .
+	arr[2][1] ="." //Chinese(Hong Kong) .
+	arr[3][1] ="." //Chinese(PRC) .
+	arr[4][1] ="." //Chinese(Singapore) .
+	arr[5][1] ="." //Chinese(Taiwan) .
+	arr[6][1] ="." //Croatian  .
+	arr[7][1] ="." //Czech   .
+	arr[8][1] ="," //Danish   ,
+	arr[9][1] ="," //Dutch(Standard) ,
+	arr[10][1]="." //English(British)  .
+	arr[11][1]="." //English(United States)  .
+	arr[12][1]="," //French(Standard) ,
+	arr[13][1]="," //German(Standard) ,
+	arr[14][1]="." //Greek   .
+	arr[15][1]="." //Hindi .
+	arr[16][1]="." //Hungarian .
+	arr[17][1]="," //Indonesian ,
+	arr[18][1]="," //Italian(Standard) ,
+	arr[19][1]="." //Japanese .
+	arr[20][1]="." //Korean .
+	arr[21][1]="," //Malaysian ,
+	arr[22][1]="," //Norwegian(Bokmal) ,
+	arr[23][1]="," //Norwegian(Nynorsk) ,
+	arr[24][1]="." //Polish .
+	arr[25][1]="," //Swedish     ,
+	arr[26][1]="," //Spanish     ,
+	arr[27][1]="," //Portuguese(Standard)    
+	arr[28][1]="," //Portuguese(Brazilian) 
+
+
+
+
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description	: This function used to convert a Number from any multilingual system 
+//	@              			  to  English decimal system .
+//	@		Pages Affected  : Shipcalculator.asp,Shipping.asp, customkititems.asp
+//      @		Function Name	: getEnglishLocale(strValue,strLocaleBefore)								
+//	@		Input Parameters: "strValue" -> the number to be converted to English decimal system
+//      @				  "strLocaleBefore" ->	Locale of the Multi-lingual Language
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	
+function getEnglishLocale(strValue,strLocaleBefore)
+{
+	var chrLB,chrLA,iIndex, returnString
+	if (strLocaleBefore == 1033)
+	{
+		return strValue
+	}
+	else
+	{
+		chrLB=getEquivString(strLocaleBefore);
+		chrLA=getEquivString(1033); 
+		strValue=String(strValue)
+		iIndex=strValue.indexOf(chrLB)
+		if(iIndex > 0)
+			returnString= strValue.substr(0,iIndex)+chrLA+strValue.substr(iIndex+1);
+		else 
+			returnString = strValue;
+		return returnString
+	}
+	
+}
+// End of the function getEnglishLocale(strValue,strLocaleBefore)
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description	: This function used to convert a Number from an English decimal system
+//	@              			  to current multilingual system .
+//	@		Pages Affected  : Shipcalculator.asp,Shipping.asp, customkititems.asp
+//      @		Function Name	: getCurrentLocale(strValue,strLocaleAfter)								
+//	@		Input Parameters: "strValue" -> the number to be converted to English decimal system
+//      @				  "strLocaleAfter" ->	Locale of the Multi-lingual Language
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+function getCurrentLocale(strValue,strLocaleAfter)
+{
+	var chrLB,chrLA,iIndex, returnString
+	if (strLocaleAfter == 1033)
+	{
+		return strValue
+	}
+	else
+	{
+		chrLB=getEquivString(1033); 
+		chrLA=getEquivString(strLocaleAfter);
+		strValue=String(strValue)
+		iIndex=strValue.indexOf(chrLB)
+		if(iIndex > 0)
+			returnString= strValue.substr(0,iIndex)+chrLA+strValue.substr(iIndex+1);
+		else 
+			returnString = strValue;
+		return returnString
+	}
+}
+
+// End of the function getCurrentLocale(strValue,strLocaleAfter)
+
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	@		Description	: This function used to find for the sperator for a given Locale
+//	@		Pages Affected  : Shipcalculator.asp,Shipping.asp, customkititems.asp
+//      @		Function Name	: getEquivString(strLocale)								
+//	@		Input Parameters: "strLocale" -> Locale of the Multi-lingual Language
+//      @				  
+//	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+function getEquivString(strLocale)
+{	
+	var strEquiv
+	strEquiv="." // This is assigned "." as the default value if none of the locale match.
+	for(i=0;i<arr.length;i++)
+	{
+		if (arr[i][0]==strLocale )
+		  {
+			  strEquiv=arr[i][1]
+			  break;
+		  }
+	
+	}
+	
+	return strEquiv;
+	
+}
+
+// End of the function getEquivString(strLocale)
+ 
+
+   </script>
+   
+
+</head>
+
+<body class="shop_grid_page">
+<!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+		<!-- mobile menu -->
+			<div id="mobile-menu">
+  <ul>
+    <li><a href="index.asp" class="home1">Home</a>
+    	<!--
+      <ul>
+        <li><a href="index.html"><span>Home Version 1</span></a></li>
+        <li><a href="Version2/index.html"><span>Home Version 2</span></a></li>
+        <li><a href="Version3/index.html"><span>Home Version 3</span></a></li>
+        <li><a href="Version4/index.html"><span>Home Version 4</span></a></li>
+        <li><a href="Version5/index.html"><span>Home Version 5</span></a></li>
+        <li><a href="rtl-version/index.html"><span>RTL Version</span></a></li>
+        <li><a href="rtl-version1/index.html"><span>Home Version 1 RTL</span></a></li>
+      </ul>
+      -->
+    </li>
+    <!--
+    <li><a href="shop_grid.html">Pages</a>
+      <ul>
+        <li><a href="#" class="">Shop Pages </a>
+          <ul>
+            <li> <a href="shop_grid.html"> Shop grid </a> </li>
+            <li> <a href="shop_grid_right_sidebar.html"> Shop grid right sidebar</a> </li>
+            <li> <a href="shop_list.html"> Shop list </a> </li>
+            <li> <a href="shop_list_right_sidebar.html"> Shop list right sidebar</a> </li>
+            <li> <a href="shop_grid_full_width.html"> Shop Full width </a> </li>
+          </ul>
+        </li>
+        <li><a href="#">Ecommerce Pages </a>
+          <ul>
+            <li> <a href="wishlist.html"> Wishlists </a> </li>
+            <li> <a href="checkout.html"> Checkout </a> </li>
+            <li> <a href="compare.html"> Compare </a> </li>
+            <li> <a href="shopping_cart.html"> Shopping cart </a> </li>
+            <li> <a href="quick_view.html"> Quick View </a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Static Pages </a>
+          <ul>
+            <li> <a href="account_page.html"> Create Account Page </a> </li>
+            <li> <a href="about_us.html"> About Us </a> </li>
+            <li> <a href="contact_us.html"> Contact us </a> </li>
+            <li> <a href="404error.html"> Error 404 </a> </li>
+            <li> <a href="faq.html"> FAQ </a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Product Categories </a>
+          <ul>
+            <li> <a href="cat-3-col.html"> 3 Column Sidebar </a> </li>
+            <li> <a href="cat-4-col.html"> 4 Column Sidebar</a> </li>
+            <li> <a href="cat-4-col-full.html"> 4 Column Full width </a> </li>
+            <li> <a href="cat-6-col.html"> 6 Columns Full width</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Single Product Pages </a>
+          <ul>
+            <li><a href="single_product.html"> single product </a> </li>
+            <li> <a href="single_product_left_sidebar.html"> single product left sidebar</a> </li>
+            <li> <a href="single_product_right_sidebar.html"> single product right sidebar</a> </li>
+            <li> <a href="single_product_magnify_zoom.html"> single product magnify zoom</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#"> Blog Pages </a>
+          <ul>
+            <li><a href="blog_right_sidebar.html">Blog – Right sidebar </a></li>
+            <li><a href="blog_left_sidebar.html">Blog – Left sidebar </a></li>
+            <li><a href="blog_full_width.html">Blog_ - Full width</a></li>
+            <li><a href="single_post.html">Single post </a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    -->
+    <li><a href="contact.asp?url=CT">Contact us</a></li>
+    <li><a href="about_us.asp">About us</a></li>
+    <!--
+    <li><a href="blog.html">Blog</a>
+      <ul>
+        <li><a href="blog_right_sidebar.html">Blog – Right sidebar </a></li>
+        <li><a href="blog_left_sidebar.html">Blog – Left sidebar </a></li>
+        <li><a href="blog_full_width.html">Blog_ - Full width</a></li>
+        <li><a href="single_post.html">Single post </a></li>
+      </ul>
+    </li>
+    -->
+    <li><a href="AtoZdisplay.asp?Type=03&TpData=">All Brands</a>
+    <!--
+      <ul>
+        <li><a href="#" class="">Accessories</a>
+          <ul>
+            <li><a href="shop_grid.html">Cocktail</a></li>
+            <li><a href="shop_grid.html">Day</a></li>
+            <li><a href="shop_grid.html">Evening</a></li>
+            <li><a href="shop_grid.html">Sundresses</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Dresses</a>
+          <ul>
+            <li><a href="shop_grid.html">Accessories</a></li>
+            <li><a href="shop_grid.html">Hats and Gloves</a></li>
+            <li><a href="shop_grid.html">Lifestyle</a></li>
+            <li><a href="shop_grid.html">Bras</a></li>
+          </ul>
+        </li>
+        <li> <a href="#">Shoes</a>
+          <ul>
+            <li> <a href="shop_grid.html">Flat Shoes</a> </li>
+            <li> <a href="shop_grid.html">Flat Sandals</a> </li>
+            <li> <a href="shop_grid.html">Boots</a> </li>
+            <li> <a href="shop_grid.html">Heels</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Jwellery</a>
+          <ul>
+            <li> <a href="shop_grid.html">Bracelets</a> </li>
+            <li> <a href="shop_grid.html">Necklaces &amp; Pendent</a> </li>
+            <li> <a href="shop_grid.html">Pendants</a> </li>
+            <li> <a href="shop_grid.html">Pins &amp; Brooches</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Dresses</a>
+          <ul>
+            <li> <a href="shop_grid.html">Casual Dresses</a> </li>
+            <li> <a href="shop_grid.html">Evening</a> </li>
+            <li> <a href="shop_grid.html">Designer</a> </li>
+            <li> <a href="shop_grid.html">Party</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Swimwear</a>
+          <ul>
+            <li> <a href="shop_grid.html">Swimsuits</a> </li>
+            <li> <a href="shop_grid.html">Beach Clothing</a> </li>
+            <li> <a href="shop_grid.html">Clothing</a> </li>
+            <li> <a href="shop_grid.html">Bikinis</a> </li>
+          </ul>
+        </li>
+      </ul>
+      -->
+    </li>
+    <li><a href="AtoZdisplay.asp?Type=01&TpData=">All Categories</a>
+    <!--
+      <ul>
+        <li> <a href="#" class="">Clothing</a>
+          <ul class="level1">
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Coats &amp; Jackets</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Raincoats</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Blazers</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Jackets</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Dresses</a>
+          <ul class="level1">
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Casual Dresses</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Evening</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Designer</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Party</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#" class="">Shoes</a>
+          <ul class="level1">
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Sport Shoes</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Casual Shoes</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Leather Shoes</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">canvas shoes</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Jackets</a>
+          <ul class="level1">
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Coats</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Formal Jackets</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Leather Jackets</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Blazers</a> </li>
+          </ul>
+        </li>
+        <li> <a href="#">Accesories</a>
+          <ul class="level1">
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Backpacks</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Wallets</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Laptops Bags</a> </li>
+            <li class="level2 nav-6-1-1"> <a href="shop_grid.html">Belts</a> </li>
+          </ul>
+        </li>
+      </ul>
+     -->
+    </li>
+    <li>
+
+	
+			<a title="My Account" href="acclogin.asp?url=AL">Login</a>
+		
+
+    </a>
+    <!--
+      <ul>
+        <li> <a href="shop_grid.html">Mobiles</a>
+          <ul>
+            <li> <a href="shop_grid.html">iPhone</a> </li>
+            <li> <a href="shop_grid.html">Samsung</a> </li>
+            <li> <a href="shop_grid.html">Nokia</a> </li>
+            <li> <a href="shop_grid.html">Sony</a> </li>
+          </ul>
+        </li>
+        <li> <a href="shop_grid.html" class="">Music &amp; Audio</a>
+          <ul>
+            <li> <a href="shop_grid.html">Audio</a> </li>
+            <li> <a href="shop_grid.html">Cameras</a> </li>
+            <li> <a href="shop_grid.html">Appling</a> </li>
+            <li> <a href="shop_grid.html">Car Music</a> </li>
+          </ul>
+        </li>
+        <li> <a href="shop_grid.html">Accessories</a>
+          <ul>
+            <li> <a href="shop_grid.html">Home &amp; Office</a> </li>
+            <li> <a href="shop_grid.html">TV &amp; Home Theater</a> </li>
+            <li> <a href="shop_grid.html">Phones &amp; Radio</a> </li>
+            <li> <a href="shop_grid.html">All Electronics</a> </li>
+          </ul>
+        </li>
+      </ul>
+      -->
+    </li>
+  </ul>
+
+</div>
+		<!-- end mobile menu -->
+
+
+		<!-- Header -->
+			
+<script Language = "Javascript">
+function submitMainsearch()
+{
+	if (document.frmMainsearch.SearchWord.value.indexOf(" ") == 0)
+	{
+		alert("Search string should not start with spaces.");
+		document.frmMainsearch.SearchWord.focus();
+		return false;
+	}
+	if (document.frmMainsearch.SearchWord.value == "")
+	{
+		alert("Please enter a search string.");
+		document.frmMainsearch.SearchWord.focus();
+		return false;
+	}
+
+	document.frmMainsearch.submit();
+	return true;
+}
+</script>
+
+
+<div id="page">  <!-- this div is closed in footer-->
+  <header>
+    <div class="header-container">
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+			<div class="col-lg-8 col-sm-5 hidden-xs">
+				<!-- Default Welcome Message -->
+				<div class="welcome-msg ">Welcome
+				
+				to Barclays Computers (PVT) Ltd.</div>
+				<span class="phone hidden-sm">Call Us: +0117510512 (Sales), +0117418539 (Technical Support)</span>
+			</div>
+
+            <!-- top links -->
+			<div class="headerlinkmenu col-lg-4 col-md-7 col-sm-7 col-xs-12">
+				<div class="links">
+
+				<div class="myaccount">
+					
+						<a title="My Account" href="accinfo.asp?url=AI"><i class="fa fa-user"></i><span class="hidden-xs">My Account</span></a>
+					
+				</div>
+
+				
+					<div class="wishlist"><a href="WishListSearch.asp" title="Wishlist"><i class="fa fa-heart"></i><span class="hidden-xs">Wishlist</span></a></div>
+				
+
+					<!--<div class="blog"><a title="Blog" href="blog.html"><i class="fa fa-rss"></i><span class="hidden-xs">Blog</span></a></div>-->
+
+				<div class="login">
+					
+							<a title="My Account" href="acclogin.asp?url=AL"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">Login</span></a>
+						
+				</div>
+
+			</div>
+            <!-- End Default Welcome Message -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-xs-6">
+            <!-- Header Logo -->
+            <div class="logo"><a title="Company Logo" href="index.asp"><img src="Images/barclayslk.png"  border="0" alt="Company Logo" /></a> </div>
+            <!-- End Header Logo -->
+
+          </div>
+          <div class="col-xs-9 col-sm-6 col-md-6">
+            <!-- Search -->
+            <div class="top-search">
+              <div id="search">
+
+				<form name = "frmMainsearch" method="post" action ="searchresult.asp" onsubmit="JavaScript:submitMainsearch();return false">
+					<input type="hidden" name="from">
+					<input type="hidden" name="FrmSearchWords">
+					<input type="hidden" name="hidSearchStringType" value=2>
+
+                	<div class="input-group">
+                		<!--
+						<select class="cate-dropdown hidden-xs" name="category_id">
+							<option>All Categories</option>
+							<option>women</option>
+							<option>&nbsp;&nbsp;&nbsp;Accessories </option>
+							<option>&nbsp;&nbsp;&nbsp;Dresses</option>
+							<option>&nbsp;&nbsp;&nbsp;Top</option>
+							<option>&nbsp;&nbsp;&nbsp;Handbags </option>
+							<option>&nbsp;&nbsp;&nbsp;Shoes </option>
+							<option>&nbsp;&nbsp;&nbsp;Clothing </option>
+							<option>Men</option>
+							<option>Electronics</option>
+							<option>&nbsp;&nbsp;&nbsp;Mobiles </option>
+							<option>&nbsp;&nbsp;&nbsp;Music &amp; Audio </option>
+						</select>
+						-->
+                      <input type="text" class="form-control" placeholder="Type keyword" maxlength="35" name="SearchWord">
+                      <button class="btn-search" type="button" onClick="JavaScript:submitMainsearch();return false"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+
+              </div>
+            </div>
+			<div class="item-title" style="margin-top:-6px;margin-left:13px;margin-bottom:5px;">
+               	<a href="Powersearch.asp?Tp=">Advance search<i class="fa fa-search" style="margin-left:5px;"></i></a>
+			</div>
+            <!-- End Search -->
+          </div>
+          <!-- top cart -->
+
+          <div class="col-lg-3 col-xs-3 top-cart">
+            			<div class="top-cart-contain">
+              <div class="mini-cart">
+					<div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
+						<a href="#">
+							<div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
+							<div class="shoppingcart-inner hidden-xs">
+								<span class="cart-title">Shopping Cart</span>
+								<span class="cart-total">0 Item(s): LKR 0.00</span>
+							</div>
+						</a>
+					</div>
+
+					
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+		<!-- end header -->
+
+		<!-- Navbar -->
+			<nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+        <div class="mm-toggle-wrap">
+              <div class="mm-toggle"> <i class="fa fa-align-justify"></i> </div><span class="mm-label">Menu</span>
+            </div>
+          <div class="mega-container visible-lg visible-md visible-sm">
+            <div class="navleft-container">
+              <div class="mega-menu-title">
+                <h3>Categories</h3>
+              </div>
+              <div class="mega-menu-category">
+				
+				<ul class="nav">
+				
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=01&Bc=">Accessories</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=230&iTpStatus=0&Tp=&Bc=">Blower</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=154&iTpStatus=0&Tp=&Bc=">Card Reader</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=03&iTpStatus=0&Tp=&Bc=">Cleaner</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=179&iTpStatus=0&Tp=&Bc=">Computer Toolkit</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=178&iTpStatus=0&Tp=&Bc=">KVM Switch &amp; Cable</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=160&iTpStatus=0&Tp=&Bc=">Laptop Cooler Pad</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=163&iTpStatus=0&Tp=&Bc=">Laptop Lock</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=08&iTpStatus=0&Tp=&Bc=">Other Accessories</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=159&iTpStatus=0&Tp=&Bc=">Tablet PC,Camera Pouch,Accessories</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=152&iTpStatus=0&Tp=&Bc=">USB HUB</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=199&Bc=">Battery</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=172&iTpStatus=0&Tp=&Bc=">Battery - CMOS</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=203&iTpStatus=0&Tp=&Bc=">UPS Battery</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=105&Bc=">Branded PC</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=209&Bc=">Broadband</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=191&iTpStatus=0&Tp=&Bc=">ADSL Splitter &amp; Splitter Cable</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=211&iTpStatus=0&Tp=&Bc=">ADSL, DSL Router</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=153&iTpStatus=0&Tp=&Bc=">Mobile Broadband</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=15&Bc=">Cables</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=130&iTpStatus=0&Tp=&Bc=">HDD Cables</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=125&iTpStatus=0&Tp=&Bc=">Network Cable</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=249&iTpStatus=0&Tp=&Bc=">Other Cables</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=129&iTpStatus=0&Tp=&Bc=">Parallel &amp; Serial Cables</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=126&iTpStatus=0&Tp=&Bc=">Telephone Cables</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=127&iTpStatus=0&Tp=&Bc=">USB Cables</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=131&iTpStatus=0&Tp=&Bc=">VGA Cables</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=16&Bc=">Cartridges</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=17&iTpStatus=0&Tp=&Bc=">Canon Cartridges</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=229&iTpStatus=0&Tp=&Bc=">Dell Cartridges</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=18&iTpStatus=0&Tp=&Bc=">Epson Cartridges</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=19&iTpStatus=0&Tp=&Bc=">HP Cartridges</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=20&iTpStatus=0&Tp=&Bc=">Lexmark Cartridges</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=22&iTpStatus=0&Tp=&Bc=">Refil Kits</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=21&iTpStatus=0&Tp=&Bc=">Ribbons</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=23&Bc=">Casing</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=11&Bc=">CD'S/DVD'S &amp; CD Pouches</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=12&iTpStatus=0&Tp=&Bc=">Blank CDs</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=13&iTpStatus=0&Tp=&Bc=">Blank DVDs</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=14&iTpStatus=0&Tp=&Bc=">CD Storage</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=193&Bc=">Computer</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=38&iTpStatus=0&Tp=&Bc=">Megabox Computers</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=05&Bc=">Converter</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=171&Bc=">Cooling Fans &amp; Heat sink</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=116&Bc=">Digital  Cameras</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=76&Bc=">Fax Machine</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+					
+								<li>
+							
+                  				
+								<a href="items.asp?Cc=33&Bc=">Hard disk</a>
+																						
+								<!-- sub categories -->	
+								
+								<div class="wrap-popup">
+								  <div class="popup">
+									<div class="row">
+									  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<ul class="nav">
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=120&iTpStatus=0&Tp=&Bc=">Hard Disk Accessories</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=34&iTpStatus=0&Tp=&Bc=">Internal Hard Disk</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=118&iTpStatus=0&Tp=&Bc=">Laptop Hard Disk</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=119&iTpStatus=0&Tp=&Bc=">Portable Hard Disk</a></li>										  
+										  
+											<li style="font-size:15px;"><a href="items.asp?Cc=247&iTpStatus=0&Tp=&Bc=">SSD</a></li>										  
+										  	
+										</ul>
+									  </div>
+									  <!--
+									  <div class="col-md-4 col-sm-6 has-sep">
+										<ul class="nav">
+										  <li><a href="shop_grid.html"><span>Digital camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>High-speed</span></a></li>
+										  <li><a href="shop_grid.html"><span>Camera phone</span> </a></li>
+										  <li><a href="shop_grid.html"><span>Multiplane</span> </a></li>
+										  <li> <a href="shop_grid.html"><span>Pocket camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Video camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Zenith camera</span></a></li>
+										  <li><a href="shop_grid.html"><span>Single-lens reflex</span></a></li>
+										  <li><a href="shop_grid.html"><span>Light-field</span></a></li>
+										</ul>
+									  </div>
+									  <div class="col-md-4 has-sep hidden-sm">
+										<div class="custom-menu-right">
+										  <div class="box-banner menu-banner">
+										   <div class="add-right"><a href="#"><img src="images/menu-img4.jpg" alt=""></a></div>
+										  </div>
+										</div>
+									  </div>
+									  -->
+									</div>
+								  </div>
+								</div>	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=07&Bc=">Head phone</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+						
+								<li class="nosub">
+							
+                  				
+								<a href="items.asp?Cc=36&Bc=">Keyboards</a>
+																						
+								<!-- sub categories -->	
+																
+                  			</li>
+					
+					<li class="nosub">
+						<a href="items.asp?CatMoveby=0&cC=&Bc=&Nbm=01&Pbm=36&sCategoryTitle=1&FromNav=True">More...</a>
+					</li>
+					
+				</ul>
+				
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8">
+          <div class="mtmegamenu">
+				<ul>
+					<li class="mt-root demo_custom_link_cms">
+						<div class="mt-root-item">
+							<a href="index.asp"><div class="title title_font"><span class="title-text">Home</span></div></a>
+						</div>
+						<!--
+						<ul class="menu-items col-md-3 col-sm-4 col-xs-12">
+						  <li class="menu-item depth-1"><div class="title"> <a href="index.html"><span>Home Version 1</span></a></div></li>
+						  <li class="menu-item depth-1"><div class="title"> <a href="../Version2/index.html"><span>Home Version 2</span></a></div></li>
+						  <li class="menu-item depth-1"><div class="title"> <a href="../Version3/index.html"><span>Home Version 3</span></a></div></li>
+						  <li class="menu-item depth-1"><div class="title"> <a href="../Version4/index.html"><span>Home Version 4</span></a></div></li>
+						</ul>
+						-->
+					</li>
+									
+					<li class="mt-root demo_custom_link_cms">
+						<div class="mt-root-item">
+							<a href="AtoZdisplay.asp?Type=01&TpData="><div class="title title_font"><span class="title-text">Products</span></div></a>
+						</div>				
+					</li>	
+				
+					
+				<!-- brand -->
+
+				
+						<li class="mt-root demo_custom_link_cms">
+							<div class="mt-root-item">
+
+								<a href="AtoZdisplay.asp?Type=03&TpData="><div class="title title_font"><span class="title-text">Brands</span></div></a>
+
+							</div>
+							<ul class="menu-items col-md-3 col-sm-4 col-xs-12">
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=11&BrandDesc=3M">3M</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=35&BrandDesc=A4+Tech">A4 Tech</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=85&BrandDesc=Acer">Acer</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=100&BrandDesc=ADATA">ADATA</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=130&BrandDesc=AOC">AOC</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=27&BrandDesc=ASUS+">ASUS </a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=275&BrandDesc=ASUS%2D+Notebooks">ASUS- Notebooks</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=124&BrandDesc=Belkin">Belkin</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=37&BrandDesc=Benq">Benq</a>
+									</div>
+								  </li>
+								
+								  <li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?Bc=164&BrandDesc=Brother">Brother</a>
+									</div>
+								  </li>
+								
+								<li class="menu-item depth-1">
+									<div class="title">
+										<a href="items.asp?CatMoveby=0&Bc=&Nbm=11&Pbm=164&sTitle=3">More...</a>
+									</div>
+								</li>
+								
+							</ul>
+						</li>
+					
+
+
+					<!--
+				  <li class="mt-root">
+					<div class="mt-root-item"><a href="#">
+					  <div class="title title_font"><span class="title-text">Shop</span></div>
+					  </a></div>
+					<ul class="menu-items col-xs-12">
+					  <li class="menu-item depth-1 menucol-1-3 ">                    
+						<div class="title title_font"> Wide range of brands</div>
+						<ul class="submenu">
+
+						  <li class="menu-item">
+							<div class="title">
+								<a href="Brands.asp?Bc=41&BrandName=Intel&Tp="> <img src="images/megabox.png" alt="Megabox"  border="0"> </a>
+							</div>
+						  </li>
+						</ul>
+					  </li>
+
+					  <li class="menu-item depth-1 menucol-1-3 ">
+					   <div class="title title_font"> <a href="#">&nbsp;</a></div>
+						<ul class="submenu">
+						  <li class="menu-item">
+							<div class="title">
+								<a href="Brands.asp?Bc=80&BrandName=Microsoft&Tp="> <img src="images/a4tech.png" alt="A4tech products in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+
+						  <li class="menu-item">
+							<div class="title">
+								<a href="items.asp?Tp=&iTpStatus=1&Bc=127&BrandDesc=Targus"> <img src="images/targus.png" alt="Targus high quality bags in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						  <li class="menu-item">
+							<div class="title">
+								<a href="items.asp?Tp=&iTpStatus=1&Bc=184&BrandDesc=Vcom"> <img src="images/vcom.png" alt="Vcom high quality cables  in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						  <li class="menu-item">
+							<div class="title">
+								<a href="items.asp?Tp=&iTpStatus=1&Bc=99&BrandDesc=Must"> <img src="images/must.png" alt="Must high quality UPS in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						</ul>
+					  </li>
+
+					  <li class="menu-item depth-1 menucol-1-3 ">
+						<div class="title title_font"> <a href="#">&nbsp;</a></div>
+						<ul class="submenu">
+						  <li class="menu-item">
+							<div class="title">
+								<a href="Brands.asp?Bc=41&BrandName=Intel&Tp="> <img src="images/intel.png" alt="Intel products in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						  <li class="menu-item">
+							<div class="title">
+								<a href="Brands.asp?Bc=100&BrandName=Adata&Tp="> <img src="images/adata.png" alt="Adata products in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						  <li class="menu-item">
+							<div class="title">
+								<a href="items.asp?Tp=&iTpStatus=1&Bc=122&BrandDesc=Cooler%20Master"> <img src="images/coolermaster.png" alt="Cooler Master products in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						  <li class="menu-item">
+							<div class="title">
+								<a href="items.asp?Cc=122&Tp=&iTpStatus=1"> <img src="images/ebox.png" alt="Ebox high quality bags in Sri Lanka"  border="0"> </a>
+							</div>
+						  </li>
+						</ul>
+					  </li>				                 
+					</ul>
+				  </li>
+				  -->
+				  <li class="mt-root">
+					<div class="mt-root-item">
+						<a href="contact.asp"><div class="title title_font"><span class="title-text">Contact Us</span> </div></a>
+					</div>
+				  </li>
+				  <li class="mt-root" style="margin-right:5px;">
+					<div class="mt-root-item">
+						<a href="about_us.asp"><div class="title title_font"><span class="title-text">about us</span></div></a>
+					</div>
+				  </li>
+
+				<!-- Best Seller -->			
+				  <li class="mt-root" style="margin-right:0px;">
+					<div class="mt-root-item" >&nbsp;
+					  <!--<div class="title title_font">
+					  <span class="title-text">-->
+						<!--kalum live chat-->
+						<!--
+						<div id="craftysyntax" style="width:149px;">							
+							<script type="text/javascript" src="http://livesupport.barclays.lk/new/livehelp_js.php?eo=0&amp;website=1&amp;serversession=1&amp;pingtimes=10&amp;dynamic=Y&amp;creditline=N"></script>
+						</div> 
+						-->
+						<!--kalum live chat End-->				  
+					  <!--</span></div>-->
+					</div>				           
+				  </li>
+				</ul>
+			
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+		<!-- end nav -->
+  <!-- Main Container -->
+
+
+  <!-- Main Container -->
+<section class="main-container col1-layout">
+	<div class="main container">
+	<div class="col-main">
+    	<div class="page-content page-order">
+        <div class="product-view-area">
+          <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+            <!--<div class="icon-sale-label sale-left">Sale</div>-->
+            <div class="large-image">
+            	<a href="images/products/img01.jpg" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20">
+            	<img class="zoom-img" src="/mmBC/Images/40000.jpg" alt="products">
+            	</a>
+            </div>
+
+            <!-- end: more-images -->
+          </div>
+          <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
+              <div class="product-name">
+                <h1>Megabox Max - I PC</h1>
+              </div>
+              <form name="frmKitAmt">
+				  <div class="price-box" style="border-bottom:0px;">
+						<input type="hidden" name="itemname" value="Megabox Max - I PC">
+						<input type="hidden" name="imglink" value="/mmBC/Images/40000.jpg">
+						<input type="hidden" name="description" value="  &lt;p&gt;&lt;strong&gt;CPU -&lt;/strong&gt; Pentium G4400&lt;br /&gt;&lt;strong&gt;RAM -&lt;/strong&gt; 4GB DDR3 1600&lt;br /&gt;&lt;strong&gt;HDD -&lt;/strong&gt; 500GB SATA&lt;br /&gt;&lt;strong&gt;Motherboard -&lt;/strong&gt; Asus H110M-C&lt;br /&gt;&lt;strong&gt;ROM -&lt;/strong&gt; Asus 24X Sata Internal&lt;/p&gt;">
+
+						
+							<p class="special-price"> <span class="price-label">Base Price:</span> <span class="price"> LKR &nbsp;53,175.00 &nbsp;</span></p>
+							<br>
+							<p class="special-price"> <span class="price-label">Your Price:</span> <span class="price">  LKR </span></p>
+							<input type="text" name="txtTotalKitValue" value="53175.00" size="10" onFocus="this.blur();" class="content">
+							
+				  </div>
+				  <!--
+				  <div class="ratings">
+					
+						<p class="availability in-stock pull-right">Availability: <span>In Stock</span></p>
+					
+				  </div>
+				  -->
+				   <div class="product-variation">
+					
+						  <div class="cart-plus-minus">
+							<label for="qty">Quantity:</label>
+							<div class="numbers-row">
+							  <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+							  <input type="text" class="qty" title="Qty"  value="1" maxlength="8"  id="qty" name="qty">
+							  <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+							</div>
+						  </div>
+					
+				    </div>
+				</form>
+				
+					<form name="frmKitInfo" method="post" action="includes/add_item.asp?ic=40000&eq=" >
+						<input type="hidden" name="qty">
+						<input type="hidden" name="configArr">
+						<input type="hidden" name="todo">
+						
+							<button class="button pro-add-to-cart" onClick="javascript:CheckConfig('add');"><span>Add to Cart</span></button>
+						
+					</form>
+				
+				<!--Showing Custom Fields-->
+				
+        </div>
+      </div>
+      <div class="product-overview-tab">
+          <div class="row">
+            <div class="col-xs-12">
+            <div class="product-tab-inner">
+				<div class="table-responsive">
+				<table class="table table-bordered cart_summary">
+				<thead>
+
+					
+							<tr><td colspan=4 ><strong>Select options; the kit price is automatically updated with the new price</strong></td></tr>
+						
+					<tr>
+						<th class="cart_product">Item Name</th>
+						<th class="cart_description">Options</th>
+						
+								<th class="price">Price</font></th>
+								<th class="qty">Qty</font></th>
+							
+					</tr>
+				</thead>
+				<tbody>
+						<form name="frmKitUpgrades">
+						
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Processors</p>
+									<input type="hidden" name="kitname1" value="Processors">
+								</td>
+								<td class="cart_description">
+									Intel - 3.90GHz Core i3-7100 3MB (3Y)
+										<input type=hidden name="upg_name1" value="Intel - 3.90GHz Core i3-7100 3MB (3Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden1" value="0.00">
+										
+										<input type=hidden name="upgradehidden1" value="17600.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price1" value="17600.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Motherboard</p>
+									<input type="hidden" name="kitname2" value="Motherboard">
+								</td>
+								<td class="cart_description">
+									Asus Prime B250M-A DDR4 Mother Board(3Y)
+										<input type=hidden name="upg_name2" value="Asus Prime B250M-A DDR4 Mother Board(3Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden2" value="0.00">
+										
+										<input type=hidden name="upgradehidden2" value="14850.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price2" value="14850.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Ram</p>
+									<input type="hidden" name="kitname3" value="Ram">
+								</td>
+								<td class="cart_description">
+									ADATA 4GB DDR4 2400 Ram (3Y)
+										<input type=hidden name="upg_name3" value="ADATA 4GB DDR4 2400 Ram (3Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden3" value="0.00">
+										
+										<input type=hidden name="upgradehidden3" value="7200.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price3" value="7200.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Internal Hard Disk</p>
+									<input type="hidden" name="kitname4" value="Internal Hard Disk">
+								</td>
+								<td class="cart_description">
+									Toshiba 500GB SATA  Hard Disk (1Y)
+										<input type=hidden name="upg_name4" value="Toshiba 500GB SATA  Hard Disk (1Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden4" value="0.00">
+										
+										<input type=hidden name="upgradehidden4" value="6450.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price4" value="6450.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Casing</p>
+									<input type="hidden" name="kitname5" value="Casing">
+								</td>
+								<td class="cart_description">
+									Ezcool CNP-670B Black 250W Casing (1Y)
+										<input type=hidden name="upg_name5" value="Ezcool CNP-670B Black 250W Casing (1Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden5" value="0.00">
+										
+										<input type=hidden name="upgradehidden5" value="3100.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price5" value="3100.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">DVD Writers</p>
+									<input type="hidden" name="kitname6" value="DVD Writers">
+								</td>
+								<td class="cart_description">
+									Asus 24X Sata Internal DVD Writer (1Y)
+										<input type=hidden name="upg_name6" value="Asus 24X Sata Internal DVD Writer (1Y)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden6" value="0.00">
+										
+										<input type=hidden name="upgradehidden6" value="2400.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price6" value="2400.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Mouse</p>
+									<input type="hidden" name="kitname7" value="Mouse">
+								</td>
+								<td class="cart_description">
+									Megabox IMA-1250 Optical USB Mouse(6m)
+										<input type=hidden name="upg_name7" value="Megabox IMA-1250 Optical USB Mouse(6m)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden7" value="0.00">
+										
+										<input type=hidden name="upgradehidden7" value="475.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price7" value="475.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Keyboards</p>
+									<input type="hidden" name="kitname8" value="Keyboards">
+								</td>
+								<td class="cart_description">
+									Megabox IMB-2629 Multimedia Keyboard(6m)
+										<input type=hidden name="upg_name8" value="Megabox IMB-2629 Multimedia Keyboard(6m)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden8" value="0.00">
+										
+										<input type=hidden name="upgradehidden8" value="900.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price8" value="900.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+							<tr>
+								<td class="cart_product">
+									<p class="product-name">Mouse Pad</p>
+									<input type="hidden" name="kitname9" value="Mouse Pad">
+								</td>
+								<td class="cart_description">
+									Megabox ESD017-BF Mouse Pad(N/W)
+										<input type=hidden name="upg_name9" value="Megabox ESD017-BF Mouse Pad(N/W)" >
+										
+											<input type=hidden name="Add_Curr_upgradehidden9" value="0.00">
+										
+										<input type=hidden name="upgradehidden9" value="200.00" >
+									
+
+								</td>
+								
+										<td class="price">
+											
+											<strong>LKR <input type="text" name="price9" value="200.00"  size="7"  readonly onfocus = "this.blur()">
+											
+										</td>
+										<td class="qty"><strong>1</strong></td>
+									
+							</tr>
+							
+						</form>
+				</tbody>
+				</table>
+				</div>
+				
+					<div class="product-overview-tab">
+					<div class="container">
+					<div class="row">
+					<div class="col-xs-12">
+					<div class="product-tab-inner">
+						<ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+							<li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
+						</ul>
+						<div id="productTabContent" class="tab-content">
+							<div class="tab-pane fade in active" id="description">
+								<div class="std">
+									<p>  <p><strong>CPU -</strong> Pentium G4400<br /><strong>RAM -</strong> 4GB DDR3 1600<br /><strong>HDD -</strong> 500GB SATA<br /><strong>Motherboard -</strong> Asus H110M-C<br /><strong>ROM -</strong> Asus 24X Sata Internal</p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+				
+					<script language="javascript">
+					CalculateTotal('53175.00','F','1033','0.00')
+					</script>
+				
+            </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+  <!-- Main Container End -->
+
+
+
+  	<!-- Footer -->
+		
+    <footer>
+	
+	
+    <div class="footer-newsletter" style="margin-top:15px;">
+      <div class="container">
+        <div class="row">
+        <!-- original theme code -->
+        <!--
+          <div class="col-md-8 col-sm-7">
+            <form id="newsletter-validate-detail" method="post" action="#">
+              <h3 class="hidden-sm">Sign up for newsletter</h3>
+              <div class="newsletter-inner">
+                <input class="newsletter-email" name='Email' placeholder='Enter Your Email'/>
+                <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="social col-md-4 col-sm-5">
+            <ul class="inline-mode">
+              <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+              <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+              <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+              <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="https://www.pinterest.com/"><i class="fa fa-linkedin"></i></a></li>
+              <li class="social-network rss"><a title="Connect us on Instagram" target="_blank" href="https://instagram.com/"><i class="fa fa-rss"></i></a></li>
+              <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+          -->
+          <div class="social col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+            <ul class="inline-mode">
+              <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/barclayscomputers"><i class="fa fa-facebook"></i></a></li>
+              <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="https://plus.google.com/b/104595609646826225728/104595609646826225728"><i class="fa fa-google-plus"></i></a></li>
+              <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/barclayslk"><i class="fa fa-twitter"></i></a></li>
+              <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="https://www.linkedin.com/company/barclays-computers"><i class="fa fa-linkedin"></i></a></li>
+              <li class="social-network rss"><a title="Connect us" target="_blank" href="http://www.barclays.lk"><i class="fa fa-rss"></i></a></li>
+              <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="https://www.instagram.com/barclayscomputers"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-xs-12 col-lg-3">
+          <div class="footer-logo"><a title="Company Logo" href="index.asp"><img src="Images/barclayslk.png"  border="0" alt="Company Logo" /></a>
+          	<!--<a href="index.asp"><img src="images/powered.gif" alt="Barclays Computers (PVT) Ltd."></a>-->
+          </div>
+
+          <!--<p>Lorem Ipsum is simply dummy text of the print and typesetting industry.</p>-->
+          <div class="footer-content">
+            <div class="email"> <i class="fa fa-envelope"></i>
+              <p>websales@barclays.lk</p>
+            </div>
+            <div class="phone"> <i class="fa fa-phone"></i>
+              <p>+0117510510 (Sales)</p>
+            </div>
+            <div class="phone"> <i class="fa fa-phone"></i>
+              <p>+0117510513 (Technical Support)</p>
+            </div>
+            <div class="address"> <i class="fa fa-map-marker"></i>
+              <p> Barclays Computers (PVT) Ltd., #42 Galle Rd, Colombo, Sri Lanka</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3 collapsed-block">
+          <div class="footer-links">
+            <h3 class="links-title">Information<a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
+            <div class="tabBlock" id="TabBlock-1">
+
+              <ul class="list-links list-unstyled">
+                <li><a href="help.asp?url=HL">Delivery Information</a></li>
+                <li><a href="help.asp?url=HL#Pricing">Discount</a></li>
+                <li><a href="sitemap.html">Sitemap</a></li>
+                <li><a href="help.asp?url=HL">Privacy Policy</a></li>
+                <li><a href="help.asp?url=HL">FAQs</a></li>
+                <li><a href="help.asp?url=HL">Terms &amp; Condition</a></li>
+              </ul>
+              <!--
+              <ul class="list-links list-unstyled">
+                <li><a href="#"><img src="/mmbc/banners/intel_partner.jpg" alt="Platinum Partner for Intel Corporation" width="178" height="62" border="0"></a></li>
+                <li><a href="#"><img src="/mmbc/banners/hp_partner.jpg" alt="Gold Partner for Hewlett Packard" width="178" height="62" border="0"></a></li>
+                <li><a href="#"><img src="/mmbc/banners/dell_partner.jpg" alt="Profile Partner for Dell" width="178" height="62" border="0"></a></li>
+                <li><a href="#"><img src="/mmbc/banners/ms_partner.jpg" alt="Tier II Partner for Microsoft softwares" width="178" height="62" border="0"></a></li>
+              </ul>
+              -->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3 collapsed-block">
+          <div class="footer-links">
+            <h3 class="links-title">Insider<a class="expander visible-xs" href="#TabBlock-3">+</a></h3>
+            <div class="tabBlock" id="TabBlock-3">
+              <ul class="list-links list-unstyled">
+                <li> <a href="index.asp"> Home </a> </li>
+                <!--
+                <li> <a href="#">News</a> </li>
+                <li> <a href="#">Trends</a> </li>
+                -->
+                <li> <a href="about_us.asp">About Us</a> </li>
+                <li> <a href="contact.asp">Contact Us</a> </li>
+                <li>
+					
+						<a title="My Orders" href="acclogin.asp?url=AL">My Orders</a>
+					
+                </li>
+				
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-2 col-xs-12 col-lg-3 collapsed-block">
+          <div class="footer-links">
+            <h3 class="links-title">Service<a class="expander visible-xs" href="#TabBlock-4">+</a></h3>
+            <div class="tabBlock" id="TabBlock-4">
+              <ul class="list-links list-unstyled">
+
+                <li> <a href="https://docs.google.com/spreadsheets/d/18OeMifv9gehAkB1KbwNScLMN-NNdQqM9VkQEikVP8I0/export?format=pdf&attachment=false" target="_blank">Laptop Price List</a> </li>
+                <li> <a href="index.asp">Request a quote</a> </li>
+                <li> <a href="http://webmaster.barclays.lk/payonline/" target="_blank">Pay online</a> </li>
+                <li> <a href="http://shop.barclays.lk/bc/zipcodes/zip-codes.asp" target="_blank">Sri Lanka postal codes</a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-coppyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 coppyright">
+          	&copy;Barclays Computers (PVT) Ltd., All rights reserved.
+			
+				Mail us at:<a href="mailto:websales@barclays.lk" class=footer>websales@barclays.lk</a>
+			
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="payment">
+              <ul>
+                <li><a href="#"><img title="Visa" alt="Visa" src="images/visa.png"></a></li>
+                <!--<li><a href="#"><img title="Paypal" alt="Paypal" src="images/paypal.png"></a></li>-->
+                <!--<li><a href="#"><img title="Discover" alt="Discover" src="images/discover.png"></a></li>-->
+                <li><a href="#"><img title="Master Card" alt="Master Card" src="images/master-card.png"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="totop"> </a> </div>
+
+	<!-- live chat files -->
+
+<script type="text/javascript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<link href="file:///E|/Backup/Desktop/Blur.css" rel="stylesheet" type="text/css">
+<body onLoad="MM_preloadImages('/mmbc/Images/lap_up1.gif','/mmbc/Images/backto_home_1.gif','/mmbc/Images/backto_home_1.png','/mmbc/Images/up_1.gif','/mmbc/banners/a4tech.png')">
+	<!-- End Footer -->
+
+	<!-- JS -->
+			<!-- jquery js -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<!-- bootstrap js -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!-- owl.carousel.min js -->
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+
+	<!-- bxslider js -->
+	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+
+
+	
+		<!--jquery-slider js -->
+		<script type="text/javascript" src="js/slider.js"></script>
+
+	
+
+	<!-- megamenu js -->
+	<script type="text/javascript" src="js/megamenu.js"></script>
+	<script type="text/javascript">
+			/* <![CDATA[ */
+			var mega_menu = '0';
+
+			/* ]]> */
+			</script>
+
+	<!-- jquery.mobile-menu js -->
+	<script type="text/javascript" src="js/mobile-menu.js"></script>
+
+	<!--jquery-ui.min js -->
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+
+	<!-- main js -->
+	<script type="text/javascript" src="js/main.js"></script>
+
+
+
+
+
+
+	<!-- End JS -->
+
+	<!-- EOGLOBAS JS -->
+			<script language="JavaScript" src="includes/EOStrings.js"></script>
+	
+<script language="JavaScript">
+	//***	This function will be called in every page to set the title atttibute for images
+	function setTitleForImages()
+	{		
+		var strUserAgent = navigator.userAgent.toUpperCase();		
+		if((strUserAgent.indexOf("NETSCAPE")>=0) || (strUserAgent.indexOf("OPERA")>=0) || (strUserAgent.indexOf("MAC") >= 0) || (strUserAgent.indexOf("GECKO") >= 0))
+		{
+			for(var intImageIndex=0;intImageIndex<document.images.length;intImageIndex++)
+			{		
+				document.images[intImageIndex].title = document.images[intImageIndex].alt;
+			}
+		}
+	}
+
+	
+	//*** This function will be called in footer.asp page,customstatement.asp,shipcalculator.asp for mac sumbit key compatability.
+	function setHrefForLinks()
+	{
+		for(var intLinkIndex=0;intLinkIndex<document.links.length;intLinkIndex++)
+		{		
+			if(document.links[intLinkIndex].onclick != null)
+			{						
+				var strTemp = document.links[intLinkIndex].onclick + "";	
+				strTemp = strTemp.replace("function onclick()","");
+				strTemp = strTemp.replace("{","");	
+				var pos = strTemp.lastIndexOf("}");
+				strTemp = strTemp.substring(0,pos);			
+				strTemp = strTemp.replace("return false;","");
+				strTemp = strTemp.replace("return false","");								
+				if(strTemp.toUpperCase().indexOf("JAVASCRIPT:")==-1) strTemp = "JavaScript:"+strTemp;
+				document.links[intLinkIndex].href = strTemp;					
+			}			
+		}
+	}
+</script>
+
+
+
+
+
+	<!-- End JS -->
+
+	<!-- additional JS files -->
+
+	<!-- flexslider js -->
+	<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+
+	<!-- countdown js -->
+	<script type="text/javascript" src="js/countdown.js"></script>
+
+	<!--cloud-zoom js -->
+	<script type="text/javascript" src="js/cloud-zoom.js"></script>
+</body>
+</html>
