@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import json
 
 
 class LaptoplkSpider(scrapy.Spider):
@@ -14,10 +15,21 @@ class LaptoplkSpider(scrapy.Spider):
             yield scrapy.Request(full_url, callback=self.parse_details_page)
 
     def parse_details_page(self, response):
+        currPageData = {}
         page = response.url.split("/")[-1]
-        filename = 'data/laptoplk/%s.html' % page
-        with open(filename, 'wb') as f:
-            f.write(response.body)
+        filename = 'data/processed/laptoplk/%s.json' % page
+        url = self.start_urls[0]+page
+        currPageData["url"] = url
+        currPageData["title"] = response.xpath('//div[@class="Pro"]/h2/text()').extract()[0]
+        currPageData["data"] = response.xpath('//div[@class="Pro"]').extract()[0]
+
+
+        with open(filename, 'w') as fp:
+            json.dump(currPageData, fp)
+        # with open(filename, 'wb') as f:
+        #     details = response.xpath('//div[@class="Pro"]').extract()
+        #     print details
+        #     f.write(str(details))
         self.log('Saved file %s' % filename)
 
 
