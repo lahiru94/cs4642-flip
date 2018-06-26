@@ -18,16 +18,17 @@ class MetropolitonSpider(scrapy.Spider):
 
     def parse_products_page(self, response):
         prod_link_path = '//h2[@class="product-name"]/a/@href'
-        nxt_link_path = '/a[@title="Next"]/@href'
-        print "++++++++++++++++++",
-        print response.selector.xpath(nxt_link_path),
-        print "++++++++++++++++++"
+        nxt_link_path = '//a[@title="Next"]/@href'
+        nxt_links = response.selector.xpath(nxt_link_path).extract()
+
+        if(len(nxt_links)>0):
+            yield scrapy.Request(nxt_links[0], callback=self.parse_products_page)
+
         links = response.selector.xpath(prod_link_path).extract()
-        print len(links)
         for link in links:
             yield scrapy.Request(link, callback=self.parse_details_page)
 
     def parse_details_page(self, response):
-        pass
+        print response.url
         # print response.selector.xpath('//div[@id="product_tabs_description_tabbed_contents"]').extract()
     
