@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-
+import json
 
 class MetropolitonSpider(scrapy.Spider):
     name = 'metropoliton'
@@ -8,9 +8,7 @@ class MetropolitonSpider(scrapy.Spider):
     start_urls = ['http://mcentre.lk/']
 
     def parse(self, response):
-        link_path = '//div[@class="no_blink_cls"]/\
-                div[not(@class="menu4")and@class="menu parrent-arrow"]//\
-                a/@href'
+        link_path = '//div[@class="no_blink_cls"]/div[not(@class="menu4")and@class="menu parrent-arrow"]//a/@href'
         links =  response.selector.xpath(link_path).extract()
         for link in links:
             yield scrapy.Request(link, callback=self.parse_products_page)
@@ -29,6 +27,29 @@ class MetropolitonSpider(scrapy.Spider):
             yield scrapy.Request(link, callback=self.parse_details_page)
 
     def parse_details_page(self, response):
-        print response.url
-        # print response.selector.xpath('//div[@id="product_tabs_description_tabbed_contents"]').extract()
+
+        url =  response.url
+        title = response.selector.xpath('//div[@class="product-name"]/h1/text()').extract_first()
+        summary = response.selector.xpath('//div[@class="short-description"]').extract()
+        specs = response.selector.xpath('//div[@id="product_tabs_description_tabbed_contents"]').extract()
+        price = response.selector.xpath('//span[@class="price"]/text()').extract_first()
+        
+        if(price is None):
+            price = response.selector.xpath('//span[@class="price special-price"]/text()').extract_first()
+
+        page = url.split("/")[-1][:-5]
+        filename = 'data/processed/metropoliton/%s.json' % page
+
+        currPageData = {}        
+        currPageData["url"] = url
+        currPageData["title"] = title
+        currPageData["summary"] = summary
+        currPageData["specs"] = specs
+        currPageData["price"] = price
+
+        with open(filename, 'w') as fp:
+            json.dump(currPageData, fp)
+
+
+
     
