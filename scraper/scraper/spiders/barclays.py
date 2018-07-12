@@ -42,18 +42,18 @@ class BarclaysSpider(scrapy.Spider):
         price = response.selector.xpath('//span[@class="price"]/text()').extract_first()
         price = utils.clean_price(price)
 
-        currPageData = {}        
-        currPageData["url"] = url
-        currPageData["title"] = title
-        currPageData["summary"] = summary
+        curr_page_data = {}        
+        curr_page_data["url"] = url
+        curr_page_data["title"] = title
+        curr_page_data["summary"] = summary
 
-        currPageData["catogory"] = catogory
-        currPageData["brand"] = brand
-        currPageData["model_id"] = model_id
-        currPageData["specs"] = specs
-        currPageData["price"] = price
+        curr_page_data["catogory"] = catogory
+        curr_page_data["brand"] = brand
+        curr_page_data["model_id"] = model_id
+        curr_page_data["specs"] = specs
+        curr_page_data["price"] = price
 
         with open(filename, 'w') as fp:
-            json.dump(currPageData, fp)
+            json.dump(curr_page_data, fp)
 
         
