@@ -7,26 +7,22 @@ class BarclaysSpider(scrapy.Spider):
     name = 'barclays'
     allowed_domains = ['barclays.lk']
     start_urls = ['http://www.barclays.lk/bc/AtoZdisplay.asp?Type=01&TpData=']
-    base_url = 'http://www.barclays.lk/bc'
+    base_url = 'http://www.barclays.lk/bc/'
     links = {}
 
     def parse(self, response):
         links =  response.selector.xpath('//li/a/@href').extract()
-        print len(links)
         for link in links:
-            full_url = self.base_url + "/" + link
+            full_url = self.base_url + link
             yield scrapy.Request(full_url, callback=self.parse_products_page)
 
     def parse_products_page(self, response):
         links =  response.selector.xpath('//div[@class="product-thumbnail"]/div/a/@href').extract()
         for link in links:
-            full_url =  link
+            full_url =  self.base_url+link
             yield scrapy.Request(full_url, callback=self.parse_details_page)
     
     def parse_details_page(self, response):
-        
-        page = response.url.split("/")[-1]
-        filename = 'data/processed/barclays/%s.json' % page
 
         url = response.url
         title = response.selector.xpath('//title/text()').extract_first()
@@ -53,7 +49,6 @@ class BarclaysSpider(scrapy.Spider):
         curr_page_data["specs"] = specs
         curr_page_data["price"] = price
 
-        with open(filename, 'w') as fp:
-            json.dump(curr_page_data, fp)
+        yield curr_page_data
 
         

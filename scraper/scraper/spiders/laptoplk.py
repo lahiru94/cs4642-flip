@@ -13,9 +13,12 @@ class LaptoplkSpider(scrapy.Spider):
         links =  response.selector.xpath('//ul[@id="menu"]/li/div//a[@class="btn-all"]/@href').extract()
         for link in links:
             full_url = self.start_urls[0] + "/" + link
-            yield scrapy.Request(full_url, callback=self.parse_products_page)
+            request = scrapy.Request(full_url, callback=self.parse_products_page)
+            request.meta['test'] = "TEST"
+            yield request
 
     def parse_products_page(self, response):
+        print response.meta['test']
         catogory = response.selector.xpath('//h2[@id="pgeHdng"]/text()').extract_first()
         if(catogory is None):
             catogory = response.selector.xpath('//div[@class="All_laptop"]/h2/text()').extract_first()
