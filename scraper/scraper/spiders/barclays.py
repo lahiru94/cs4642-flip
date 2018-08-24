@@ -48,6 +48,7 @@ class BarclaysSpider(scrapy.Spider):
         curr_page_data["model_id"] = model_id
         curr_page_data["specs"] = specs
         curr_page_data["price"] = price
+        curr_page_data["vendor"] = "barclays"
 
         yield curr_page_data
 

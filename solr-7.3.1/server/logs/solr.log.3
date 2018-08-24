@@ -1,0 +1,54 @@
+2018-08-24 05:13:58.425 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.8.v20171121, build timestamp: 2017-11-21T21:27:37Z, git hash: 82b8fb23f757335bb3329d540ce37a2a2615f0a8
+2018-08-24 05:13:59.138 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.3.1
+2018-08-24 05:13:59.139 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2018-08-24 05:13:59.139 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /home/lahiru/cs4642-plotter/solr-7.3.1
+2018-08-24 05:13:59.181 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2018-08-24T05:13:59.141Z
+2018-08-24 05:13:59.183 INFO  (main) [   ] o.a.s.u.StartupLoggingUtils Property solr.log.muteconsole given. Muting ConsoleAppender named CONSOLE
+2018-08-24 05:13:59.327 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr
+2018-08-24 05:13:59.344 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/solr.xml
+2018-08-24 05:14:01.372 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr
+2018-08-24 05:14:01.373 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Cores are: [plotter]
+2018-08-24 05:14:01.381 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
+2018-08-24 05:14:01.597 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.c.SolrResourceLoader [plotter] Added 57 libs to classloader, from paths: [/home/lahiru/cs4642-plotter/solr-7.3.1/contrib/clustering/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/extraction/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/langid/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/velocity/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/dist]
+2018-08-24 05:14:01.630 INFO  (main) [   ] o.e.j.s.Server Started @5093ms
+2018-08-24 05:14:03.518 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.3.1
+2018-08-24 05:14:03.883 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.s.IndexSchema [plotter] Schema name=default-config
+2018-08-24 05:14:05.054 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2018-08-24 05:14:05.148 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.c.CoreContainer Creating SolrCore 'plotter' using configuration from instancedir /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter, trusted=true
+2018-08-24 05:14:05.287 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2018-08-24 05:14:05.294 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.c.SolrCore [[plotter] ] Opening new SolrCore at [/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter], dataDir=[/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/data/]
+2018-08-24 05:14:05.384 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2018-08-24 05:14:06.141 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2018-08-24 05:14:06.143 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2018-08-24 05:14:06.178 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2018-08-24 05:14:06.179 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2018-08-24 05:14:06.370 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.s.SolrIndexSearcher Opening [Searcher@107fb43e[plotter] main]
+2018-08-24 05:14:06.450 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf
+2018-08-24 05:14:06.497 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2018-08-24 05:14:06.537 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2018-08-24 05:14:06.563 INFO  (coreLoadExecutor-6-thread-1) [   x:plotter] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2018-08-24 05:14:06.716 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@107fb43e[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(7.3.1):C649)))}
+2018-08-24 05:14:06.716 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-08-24 05:14:06.716 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2018-08-24 05:14:06.737 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.SolrCore [plotter] Registered new searcher Searcher@107fb43e[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(7.3.1):C649)))}
+2018-08-24 05:14:08.204 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=all_data:dell&_=1535087342571} hits=26 status=0 QTime=76
+2018-08-24 05:14:08.689 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=all_data:dell&_=1535087342571} hits=26 status=0 QTime=1
+2018-08-24 05:14:19.064 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:dell&facet.field=brand&facet=on} hits=26 status=0 QTime=39
+2018-08-24 05:14:34.397 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:metropoliton+laptops&facet.field=brand&facet=on} hits=279 status=0 QTime=15
+2018-08-24 05:14:47.615 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:metropoliton&facet.field=brand&facet=on} hits=279 status=0 QTime=2
+2018-08-24 05:15:00.092 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:softlogic&facet.field=brand&facet=on} hits=22 status=0 QTime=1
+2018-08-24 05:15:05.996 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:softlogic+laptops&facet.field=brand&facet=on} hits=22 status=0 QTime=1
+2018-08-24 05:15:16.206 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:abans+laptops&facet.field=brand&facet=on} hits=0 status=0 QTime=3
+2018-08-24 05:15:19.565 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:abans&facet.field=brand&facet=on} hits=0 status=0 QTime=1
+2018-08-24 05:15:30.869 INFO  (qtp1908316405-12) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:abans&facet.field=brand&facet=on} hits=0 status=0 QTime=2
+2018-08-24 05:15:59.758 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:barclays+desktops&facet.field=brand&facet=on} hits=348 status=0 QTime=2
+2018-08-24 05:16:22.727 INFO  (qtp1908316405-12) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:barclays+desktops&facet.field=brand&facet=on} hits=348 status=0 QTime=3
+2018-08-24 05:16:24.569 INFO  (qtp1908316405-14) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:barclays+desktops&facet.field=brand&facet=on} hits=348 status=0 QTime=1
+2018-08-24 05:17:08.192 INFO  (qtp1908316405-14) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=all_data:barclays+desktops&_=1535087342571} hits=348 status=0 QTime=1
+2018-08-24 05:17:37.259 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=all_data:softlogic+desktops&_=1535087342571} hits=22 status=0 QTime=1
+2018-08-24 05:19:43.294 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1072410641
+2018-08-24 05:19:43.294 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node, tag=null
+2018-08-24 05:19:43.294 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm, tag=null
+2018-08-24 05:19:43.295 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty, tag=null
+2018-08-24 05:19:43.297 INFO  (coreCloseExecutor-13-thread-1) [   x:plotter] o.a.s.c.SolrCore [plotter]  CLOSING SolrCore org.apache.solr.core.SolrCore@3a645060
+2018-08-24 05:19:43.298 INFO  (coreCloseExecutor-13-thread-1) [   x:plotter] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=979652704

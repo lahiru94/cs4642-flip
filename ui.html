@@ -133,7 +133,7 @@
 
       $( "#search" ).click(function() {
         var query = $("#search_query").val();
-        var url ='http://localhost:8983/solr/test/query?facet=on&&facet.field=brand&&q=all_data:'+query
+        var url ='http://localhost:8983/solr/plotter/query?facet=on&&facet.field=brand&&q=all_data:'+query+'&rows=50'
         showResults(url)
 
       });
@@ -142,7 +142,7 @@
       $(document).on("click",".chip", function () {
         var query = $("#search_query").val();
         var brand_id = $(this).attr('id'); // or var clickedBtnID = this.id
-        var url ='http://localhost:8983/solr/test/query?facet=on&&facet.field=brand&&q=all_data:'+query+'&&fq=brand:'+ brand_id
+        var url ='http://localhost:8983/solr/plotter/query?facet=on&&facet.field=brand&&q=all_data:'+query+'&&fq=brand:'+ brand_id+ '&rows=50'
         console.log(url)
         showResults(url)
       });
@@ -152,7 +152,7 @@
         var lower = $("#lower").val()
         var upper = $("#upper").val()
         var query = $("#search_query").val();
-        var url ='http://localhost:8983/solr/test/query?facet=on&&facet.field=brand&&q=all_data:'+query+'&&fq=price:['+lower+'+TO+'+upper+']'
+        var url ='http://localhost:8983/solr/plotter/query?facet=on&&facet.field=brand&&q=all_data:'+query+'&&fq=price:['+lower+'+TO+'+upper+']'+ '&rows=50'
         showResults(url)
       });
 

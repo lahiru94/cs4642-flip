@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
+
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-field":{
      "name":"url",
      "indexed":false,
      "type":"string",
      "stored":true }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -15,7 +16,15 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":false,
      "type":"string",
      "stored":true }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
+
+curl -X POST -H 'Content-type:application/json' --data-binary '{
+  "add-field":{
+     "name":"vendor",
+     "indexed":false,
+     "type":"string",
+     "stored":true }
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -24,7 +33,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":false,
      "type":"string",
      "stored":true }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -33,7 +42,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":true,
      "type":"text_general",
      "stored":false }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -43,7 +52,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "type":"pfloats",
      "stored":true,
      "docValues":true}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -52,7 +61,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":true,
      "type":"text_general",
      "stored":false }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -61,7 +70,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":true,
      "type":"text_general",
      "stored":false }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -70,7 +79,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "indexed":true,
      "type":"text_general",
      "stored":false }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
@@ -80,45 +89,52 @@ curl -X POST -H 'Content-type:application/json' --data-binary '{
      "type":"text_general",
      "stored":true,
      "multiValued":true }
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"title",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"summary",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"catogory",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"brand",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"model_id",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
 
 
 curl -X POST -H 'Content-type:application/json' --data-binary '{
   "add-copy-field":{
      "source":"specs",
      "dest":"all_data"}
-}' http://localhost:8983/solr/test/schema
+}' http://localhost:8983/solr/plotter/schema
+
+
+curl -X POST -H 'Content-type:application/json' --data-binary '{
+  "add-copy-field":{
+     "source":"vendor",
+     "dest":"all_data"}
+}' http://localhost:8983/solr/plotter/schema

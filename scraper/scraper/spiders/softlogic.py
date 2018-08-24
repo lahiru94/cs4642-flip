@@ -77,6 +77,8 @@ class SoftlogicSpider(scrapy.Spider):
         data =  json.loads(response.text)
         page_data['price'] = data['price']
         page_data['model_id'] = data['erp']
+        page_data["vendor"] = "softlogic"
+
 
         yield page_data
 

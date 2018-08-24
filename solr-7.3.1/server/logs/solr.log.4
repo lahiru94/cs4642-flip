@@ -1,0 +1,532 @@
+2018-08-24 04:34:49.324 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.8.v20171121, build timestamp: 2017-11-21T21:27:37Z, git hash: 82b8fb23f757335bb3329d540ce37a2a2615f0a8
+2018-08-24 04:34:49.914 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.3.1
+2018-08-24 04:34:49.914 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2018-08-24 04:34:49.914 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /home/lahiru/cs4642-plotter/solr-7.3.1
+2018-08-24 04:34:49.930 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2018-08-24T04:34:49.915Z
+2018-08-24 04:34:49.931 INFO  (main) [   ] o.a.s.u.StartupLoggingUtils Property solr.log.muteconsole given. Muting ConsoleAppender named CONSOLE
+2018-08-24 04:34:50.021 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr
+2018-08-24 04:34:50.041 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/solr.xml
+2018-08-24 04:34:51.738 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 0 core definitions underneath /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr
+2018-08-24 04:34:51.813 INFO  (main) [   ] o.e.j.s.Server Started @3603ms
+2018-08-24 04:34:57.214 INFO  (qtp1908316405-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=143
+2018-08-24 04:34:57.348 INFO  (qtp1908316405-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=5
+2018-08-24 04:34:57.373 INFO  (qtp1908316405-16) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
+2018-08-24 04:34:57.374 INFO  (qtp1908316405-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={core=plotter&action=STATUS&wt=json} status=0 QTime=2
+2018-08-24 04:34:57.491 INFO  (qtp1908316405-15) [   ] o.a.s.h.a.CoreAdminOperation core create command name=plotter&action=CREATE&instanceDir=plotter&wt=json
+2018-08-24 04:34:57.629 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.SolrResourceLoader [plotter] Added 57 libs to classloader, from paths: [/home/lahiru/cs4642-plotter/solr-7.3.1/contrib/clustering/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/extraction/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/langid/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/velocity/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/dist]
+2018-08-24 04:34:59.828 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.3.1
+2018-08-24 04:35:00.078 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.IndexSchema [plotter] Schema name=default-config
+2018-08-24 04:35:00.941 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2018-08-24 04:35:00.989 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.CoreContainer Creating SolrCore 'plotter' using configuration from instancedir /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter, trusted=true
+2018-08-24 04:35:01.022 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2018-08-24 04:35:01.053 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.SolrCore [[plotter] ] Opening new SolrCore at [/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter], dataDir=[/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/data/]
+2018-08-24 04:35:01.317 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2018-08-24 04:35:01.951 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2018-08-24 04:35:01.951 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2018-08-24 04:35:01.967 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2018-08-24 04:35:01.967 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2018-08-24 04:35:02.023 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.SolrIndexSearcher Opening [Searcher@1de39cbe[plotter] main]
+2018-08-24 04:35:02.046 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf
+2018-08-24 04:35:02.093 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2018-08-24 04:35:02.123 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2018-08-24 04:35:02.140 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2018-08-24 04:35:02.344 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@1de39cbe[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:35:02.345 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-08-24 04:35:02.345 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2018-08-24 04:35:02.353 INFO  (searcherExecutor-7-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.SolrCore [plotter] Registered new searcher Searcher@1de39cbe[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:35:02.381 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1609653606029459456
+2018-08-24 04:35:02.393 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={name=plotter&action=CREATE&instanceDir=plotter&wt=json} status=0 QTime=4901
+2018-08-24 04:35:10.819 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.h.SolrConfigHandler Failed to run commands. errors are {set-property={update.autoCreateFields=false}\, errorMessages=['update.autoCreateFields' is not an editable property]}
+2018-08-24 04:35:10.820 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/config params={wt=javabin&version=2} status=0 QTime=10
+2018-08-24 04:35:54.301 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.324 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=98
+2018-08-24 04:35:54.375 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.401 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=64
+2018-08-24 04:35:54.449 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.468 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=53
+2018-08-24 04:35:54.513 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.534 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=53
+2018-08-24 04:35:54.575 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.615 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=66
+2018-08-24 04:35:54.656 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.674 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=46
+2018-08-24 04:35:54.705 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.724 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=37
+2018-08-24 04:35:54.753 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:35:54.791 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=55
+2018-08-24 04:35:54.803 ERROR (qtp1908316405-20) [   x:plotter] o.a.s.s.ManagedIndexSchema Field 'all_data': Field type 'spec_text' not found.
+2018-08-24 04:35:54.805 ERROR (qtp1908316405-20) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-field={name=all_data, indexed=true, type=spec_text, stored=true, multiValued=true}, errorMessages=[Field 'all_data': Field type 'spec_text' not found.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.806 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=2
+2018-08-24 04:35:54.820 ERROR (qtp1908316405-20) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=title, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.820 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=0
+2018-08-24 04:35:54.833 ERROR (qtp1908316405-20) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=summary, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.833 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=1
+2018-08-24 04:35:54.846 ERROR (qtp1908316405-20) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=catogory, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.846 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=1
+2018-08-24 04:35:54.863 ERROR (qtp1908316405-16) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=brand, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.863 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=0
+2018-08-24 04:35:54.877 ERROR (qtp1908316405-16) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=model_id, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.877 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=1
+2018-08-24 04:35:54.890 ERROR (qtp1908316405-16) [   x:plotter] o.a.s.h.RequestHandlerBase org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{add-copy-field={source=specs, dest=all_data}, errorMessages=[copyField dest :'all_data' is not an explicit field and doesn't match a dynamicField.
+]}], 
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:195)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:711)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:517)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:384)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:330)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1629)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:190)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:219)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Thread.java:748)
+
+2018-08-24 04:35:54.890 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=400 QTime=1
+2018-08-24 04:37:50.753 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=8
+2018-08-24 04:37:50.773 INFO  (qtp1908316405-20) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=null
+2018-08-24 04:37:50.774 INFO  (qtp1908316405-20) [   ] o.a.s.c.SolrCore [plotter]  CLOSING SolrCore org.apache.solr.core.SolrCore@7d5281eb
+2018-08-24 04:37:50.774 INFO  (qtp1908316405-20) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=2102559211
+2018-08-24 04:37:50.803 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={deleteInstanceDir=true&core=plotter&deleteDataDir=true&action=UNLOAD&wt=json&deleteIndex=true} status=0 QTime=30
+2018-08-24 04:37:55.905 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=5
+2018-08-24 04:37:55.933 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=6
+2018-08-24 04:37:55.952 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={core=plotter&action=STATUS&wt=json} status=0 QTime=0
+2018-08-24 04:37:55.979 INFO  (qtp1908316405-20) [   ] o.a.s.h.a.CoreAdminOperation core create command name=plotter&action=CREATE&instanceDir=plotter&wt=json
+2018-08-24 04:37:56.006 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.SolrResourceLoader [plotter] Added 57 libs to classloader, from paths: [/home/lahiru/cs4642-plotter/solr-7.3.1/contrib/clustering/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/extraction/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/langid/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/velocity/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/dist]
+2018-08-24 04:37:56.048 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.3.1
+2018-08-24 04:37:56.121 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.IndexSchema [plotter] Schema name=default-config
+2018-08-24 04:37:56.366 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2018-08-24 04:37:56.380 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.CoreContainer Creating SolrCore 'plotter' using configuration from instancedir /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter, trusted=true
+2018-08-24 04:37:56.380 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2018-08-24 04:37:56.380 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.SolrCore [[plotter] ] Opening new SolrCore at [/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter], dataDir=[/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/data/]
+2018-08-24 04:37:56.482 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2018-08-24 04:37:56.528 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2018-08-24 04:37:56.529 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2018-08-24 04:37:56.532 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2018-08-24 04:37:56.532 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2018-08-24 04:37:56.534 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.SolrIndexSearcher Opening [Searcher@3d1b98f2[plotter] main]
+2018-08-24 04:37:56.535 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf
+2018-08-24 04:37:56.536 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2018-08-24 04:37:56.536 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2018-08-24 04:37:56.538 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2018-08-24 04:37:56.539 INFO  (searcherExecutor-12-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@3d1b98f2[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:37:56.539 INFO  (searcherExecutor-12-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-08-24 04:37:56.539 INFO  (searcherExecutor-12-thread-1-processing-x:plotter) [   x:plotter] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2018-08-24 04:37:56.540 INFO  (searcherExecutor-12-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.SolrCore [plotter] Registered new searcher Searcher@3d1b98f2[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:37:56.546 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1609653788654698496
+2018-08-24 04:37:56.549 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={name=plotter&action=CREATE&instanceDir=plotter&wt=json} status=0 QTime=569
+2018-08-24 04:38:00.805 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.h.SolrConfigHandler Failed to run commands. errors are {set-property={update.autoCreateFields=false}\, errorMessages=['update.autoCreateFields' is not an editable property]}
+2018-08-24 04:38:00.805 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/config params={wt=javabin&version=2} status=0 QTime=3
+2018-08-24 04:38:11.431 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.451 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=42
+2018-08-24 04:38:11.484 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.507 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=43
+2018-08-24 04:38:11.542 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.562 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=40
+2018-08-24 04:38:11.604 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.631 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=54
+2018-08-24 04:38:11.664 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.685 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=39
+2018-08-24 04:38:11.713 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.729 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=29
+2018-08-24 04:38:11.762 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.789 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=46
+2018-08-24 04:38:11.821 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.829 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=26
+2018-08-24 04:38:11.858 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.880 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=39
+2018-08-24 04:38:11.910 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.918 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=22
+2018-08-24 04:38:11.942 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.951 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=21
+2018-08-24 04:38:11.975 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:11.985 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=21
+2018-08-24 04:38:12.012 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:12.029 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=31
+2018-08-24 04:38:12.055 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:12.087 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=43
+2018-08-24 04:38:12.137 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 04:38:12.151 INFO  (qtp1908316405-16) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=51
+2018-08-24 04:59:26.372 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=40
+2018-08-24 04:59:26.434 INFO  (qtp1908316405-20) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=null
+2018-08-24 04:59:26.434 INFO  (qtp1908316405-20) [   ] o.a.s.c.SolrCore [plotter]  CLOSING SolrCore org.apache.solr.core.SolrCore@3af408e4
+2018-08-24 04:59:26.434 INFO  (qtp1908316405-20) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=989071588
+2018-08-24 04:59:26.577 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={deleteInstanceDir=true&core=plotter&deleteDataDir=true&action=UNLOAD&wt=json&deleteIndex=true} status=0 QTime=156
+2018-08-24 04:59:37.342 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=5
+2018-08-24 04:59:37.376 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=14
+2018-08-24 04:59:37.397 INFO  (qtp1908316405-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={core=plotter&action=STATUS&wt=json} status=0 QTime=0
+2018-08-24 04:59:37.581 INFO  (qtp1908316405-17) [   ] o.a.s.h.a.CoreAdminOperation core create command name=plotter&action=CREATE&instanceDir=plotter&wt=json
+2018-08-24 04:59:37.628 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.SolrResourceLoader [plotter] Added 57 libs to classloader, from paths: [/home/lahiru/cs4642-plotter/solr-7.3.1/contrib/clustering/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/extraction/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/langid/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/contrib/velocity/lib, /home/lahiru/cs4642-plotter/solr-7.3.1/dist]
+2018-08-24 04:59:38.188 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.3.1
+2018-08-24 04:59:38.229 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.IndexSchema [plotter] Schema name=default-config
+2018-08-24 04:59:38.389 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2018-08-24 04:59:38.398 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.CoreContainer Creating SolrCore 'plotter' using configuration from instancedir /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter, trusted=true
+2018-08-24 04:59:38.398 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2018-08-24 04:59:38.399 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.SolrCore [[plotter] ] Opening new SolrCore at [/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter], dataDir=[/home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/data/]
+2018-08-24 04:59:38.503 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2018-08-24 04:59:38.559 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2018-08-24 04:59:38.559 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2018-08-24 04:59:38.561 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2018-08-24 04:59:38.561 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2018-08-24 04:59:38.564 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.SolrIndexSearcher Opening [Searcher@379272bf[plotter] main]
+2018-08-24 04:59:38.564 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf
+2018-08-24 04:59:38.565 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2018-08-24 04:59:38.565 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2018-08-24 04:59:38.567 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2018-08-24 04:59:38.567 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@379272bf[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:59:38.567 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-08-24 04:59:38.567 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2018-08-24 04:59:38.568 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1609655153923719168
+2018-08-24 04:59:38.573 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.SolrCore [plotter] Registered new searcher Searcher@379272bf[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2018-08-24 04:59:38.574 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={name=plotter&action=CREATE&instanceDir=plotter&wt=json} status=0 QTime=993
+2018-08-24 04:59:44.269 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.h.SolrConfigHandler Failed to run commands. errors are {set-property={update.autoCreateFields=false}\, errorMessages=['update.autoCreateFields' is not an editable property]}
+2018-08-24 04:59:44.269 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/config params={wt=javabin&version=2} status=0 QTime=2
+2018-08-24 05:04:46.695 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.725 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=41
+2018-08-24 05:04:46.750 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.770 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=31
+2018-08-24 05:04:46.798 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.814 INFO  (qtp1908316405-17) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=29
+2018-08-24 05:04:46.839 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.859 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=30
+2018-08-24 05:04:46.890 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.914 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=43
+2018-08-24 05:04:46.943 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:46.970 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=41
+2018-08-24 05:04:47.000 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.025 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=41
+2018-08-24 05:04:47.058 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.081 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=39
+2018-08-24 05:04:47.114 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.135 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=39
+2018-08-24 05:04:47.188 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.203 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=51
+2018-08-24 05:04:47.240 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.247 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=26
+2018-08-24 05:04:47.287 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.309 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=39
+2018-08-24 05:04:47.342 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.381 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=56
+2018-08-24 05:04:47.409 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.414 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=20
+2018-08-24 05:04:47.441 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.459 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=30
+2018-08-24 05:04:47.487 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.503 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=29
+2018-08-24 05:04:47.530 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.s.ManagedIndexSchema Upgraded to managed schema at /home/lahiru/cs4642-plotter/solr-7.3.1/server/solr/plotter/conf/managed-schema
+2018-08-24 05:04:47.548 INFO  (qtp1908316405-18) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/schema params={} status=0 QTime=28
+2018-08-24 05:08:39.975 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.p.LogUpdateProcessorFactory [plotter]  webapp=/solr path=/update/json/docs params={}{add=[7092f9af-2263-499a-b2c1-0ffca278544c (1609655720828993536), 9bdd3eba-2fba-40d2-affb-3284e1c19af8 (1609655721081700352), badefe44-a25b-4c41-b768-ac4a1f1d70f1 (1609655721115254784), c94502d0-7dcd-4f72-8b1a-1b9481cb23d6 (1609655721123643392), dab5b21f-fbbd-4df1-b50d-a1ddb1cc8294 (1609655721132032000), e0b3f7b6-095f-48ca-859c-ca3e469caf51 (1609655721138323456), e9117fce-3b62-464f-becc-91b8614c89b6 (1609655721140420608), 86f8c4db-1b17-4abd-987a-aa5caa393128 (1609655721144614912), b6f3b7ce-60fd-4362-9379-8ef5ba3f670a (1609655721159294976), da61c65e-2697-41af-9134-dce8bcb66138 (1609655721171877888), ... (348 adds)]} 0 875
+2018-08-24 05:08:40.215 INFO  (qtp1908316405-14) [   x:plotter] o.a.s.u.p.LogUpdateProcessorFactory [plotter]  webapp=/solr path=/update/json/docs params={}{add=[1dc6bdef-3fa2-4d1f-9ce4-00352dc198cb (1609655721638494208), 9c9b0771-e09c-4f1c-848f-9aef02d13367 (1609655721641639936), dc62d3a9-2808-465f-904c-eff273cfcbc2 (1609655721644785664), d9dd6414-0ac4-4ef1-b245-080cf930f572 (1609655721646882816), efd492e0-4f63-43dd-9a00-991b554b4fd8 (1609655721647931392), a1d467a9-3df9-4ccf-aa2a-c524e81148b8 (1609655721647931393), 0234d64c-2f60-462f-88d4-1dc06f526f04 (1609655721648979968), 7135ce5a-ac43-4c95-89ef-9a5cd1183fe6 (1609655721650028544), bf501d19-65d7-44c4-a1b7-7b99abee3062 (1609655721651077120), d497113a-3432-444c-933a-35c5ae7f231a (1609655721652125696), ... (279 adds)]} 0 232
+2018-08-24 05:08:40.237 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.p.LogUpdateProcessorFactory [plotter]  webapp=/solr path=/update/json/docs params={}{add=[8d17c400-558a-4be0-b5ee-c0ed9484bc17 (1609655721888055296), d8c6edc5-ade0-461f-92fd-8f9ae50ededf (1609655721888055297), 7ea10441-9e57-44a4-a789-14f7bc34051c (1609655721890152448), 7ba00f79-5321-4466-ab8e-b86dadeb8dd9 (1609655721890152449), 61980905-6394-46d7-b1e8-c7481db990ec (1609655721890152450), de550dc1-dc84-45fe-bcaa-e28017ed9f02 (1609655721891201024), 1415a2fd-d8bb-4d01-8666-6977dc4a5161 (1609655721891201025), 0135d630-4185-4146-baea-8ffabc4c7970 (1609655721892249600), bad60518-6877-40f8-af98-4d3afc1a2ca1 (1609655721892249601), ea31c388-fe6b-4659-8de9-1042e3ee5ad7 (1609655721892249602), ... (22 adds)]} 0 16
+2018-08-24 05:08:40.241 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.DirectUpdateHandler2 start commit{_version_=1609655721909026816,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+2018-08-24 05:08:40.252 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.SolrIndexWriter Calling setCommitData with IW:org.apache.solr.update.SolrIndexWriter@3dd12b51 commitCommandVersion:1609655721909026816
+2018-08-24 05:08:41.218 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.s.SolrIndexSearcher Opening [Searcher@87ef828[plotter] main]
+2018-08-24 05:08:41.220 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.DirectUpdateHandler2 end_commit_flush
+2018-08-24 05:08:41.234 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@87ef828[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(7.3.1):C649)))}
+2018-08-24 05:08:41.234 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-08-24 05:08:41.234 INFO  (searcherExecutor-17-thread-1-processing-x:plotter) [   x:plotter] o.a.s.c.SolrCore [plotter] Registered new searcher Searcher@87ef828[plotter] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_0(7.3.1):C649)))}
+2018-08-24 05:08:41.234 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.u.p.LogUpdateProcessorFactory [plotter]  webapp=/solr path=/update params={commit=true}{commit=} 0 993
+2018-08-24 05:08:56.953 INFO  (qtp1908316405-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1535081200853} status=0 QTime=0
+2018-08-24 05:08:56.966 INFO  (qtp1908316405-12) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535081200854} status=0 QTime=12
+2018-08-24 05:08:57.028 INFO  (qtp1908316405-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535081200854} status=0 QTime=9
+2018-08-24 05:08:58.413 INFO  (qtp1908316405-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1535087338129} status=0 QTime=0
+2018-08-24 05:08:58.425 INFO  (qtp1908316405-12) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535087338132} status=0 QTime=6
+2018-08-24 05:08:58.440 INFO  (qtp1908316405-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535087338132} status=0 QTime=10
+2018-08-24 05:09:00.418 INFO  (qtp1908316405-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1535087338129} status=0 QTime=0
+2018-08-24 05:09:00.431 INFO  (qtp1908316405-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535087338132} status=0 QTime=11
+2018-08-24 05:09:00.527 INFO  (qtp1908316405-14) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1535087340410} status=0 QTime=97
+2018-08-24 05:09:00.540 INFO  (qtp1908316405-20) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/replication params={wt=json&command=details&_=1535087340410} status=0 QTime=110
+2018-08-24 05:09:00.563 INFO  (qtp1908316405-13) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/admin/ping params={action=status&wt=json&_=1535087338132&ts=1535087338132} status=503 QTime=87
+2018-08-24 05:09:00.567 INFO  (qtp1908316405-12) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/admin/system params={wt=json&_=1535087340410} status=0 QTime=129
+2018-08-24 05:09:02.610 INFO  (qtp1908316405-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1535087338129} status=0 QTime=0
+2018-08-24 05:09:02.626 INFO  (qtp1908316405-12) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1535087338132} status=0 QTime=12
+2018-08-24 05:09:04.300 INFO  (qtp1908316405-19) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=*:*&_=1535087342571} hits=649 status=0 QTime=131
+2018-08-24 05:11:14.176 INFO  (qtp1908316405-13) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:dell&facet.field=brand&facet=on} hits=26 status=0 QTime=208
+2018-08-24 05:11:29.372 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/query params={q=all_data:dell&facet.field=brand&facet=on} hits=26 status=0 QTime=2
+2018-08-24 05:11:48.456 INFO  (qtp1908316405-15) [   x:plotter] o.a.s.c.S.Request [plotter]  webapp=/solr path=/select params={q=all_data:dell&_=1535087342571} hits=26 status=0 QTime=0
+2018-08-24 05:13:52.847 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=294247762
+2018-08-24 05:13:52.847 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node, tag=null
+2018-08-24 05:13:52.847 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm, tag=null
+2018-08-24 05:13:52.847 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty, tag=null
+2018-08-24 05:13:52.849 INFO  (coreCloseExecutor-23-thread-1) [   x:plotter] o.a.s.c.SolrCore [plotter]  CLOSING SolrCore org.apache.solr.core.SolrCore@5bc1d28d
+2018-08-24 05:13:52.849 INFO  (coreCloseExecutor-23-thread-1) [   x:plotter] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.plotter, tag=1539429005
